@@ -20,5 +20,9 @@
     }
   },
   "include": ["src", "test-utils"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "exclude": [
+    "node_modules",
+    ".npm"
+  ]
 }
