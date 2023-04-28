@@ -2,6 +2,8 @@ import { Container, Grid, rem, Skeleton, useMantineTheme } from '@mantine/core';
 import { ThemeProvider } from './ThemeProvider';
 import { HeaderAction } from './Welcome/HeaderAction';
 import { HeroBullets } from './Welcome/HeroBullets';
+import { BadgeCard } from './Welcome/BadgeCard';
+import Cat from './assets/Cat.png';
 
 export default function App() {
     const links = [{
@@ -40,7 +42,22 @@ export default function App() {
             <Container my="md">
                 <Grid gutter="md">
                     <Grid.Col span={4}>
-                        <Skeleton height={PRIMARY_COL_HEIGHT} radius="md" animate />
+                        {<BadgeCard
+                          image={Cat}
+                          title="INFOTEAM CAT"
+                          country="Korea"
+                          description="
+                            Some quick example text to build on the card title and make up the bulk of the card's content.
+                        "
+                          badges={[{
+                                    emoji: '👨‍💻', label: 'Developer',
+                                }, {
+                                    emoji: '😻', label: 'Cat',
+                                }, {
+                                    emoji: '😽', label: 'CuteCat',
+                                }]}
+                        /> ||
+                            <Skeleton height={PRIMARY_COL_HEIGHT} radius="md" animate />}
                     </Grid.Col>
                     <Grid.Col span={8}>
                         <Grid gutter="md">
