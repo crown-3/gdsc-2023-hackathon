@@ -1,7 +1,8 @@
 import { MantineProvider, MantineThemeOverride } from '@mantine/core';
 
 export const theme: MantineThemeOverride = {
-    colorScheme: 'light',
+  colorScheme: 'light',
+  loader: 'dots',
 };
 
 interface ThemeProviderProps {
@@ -9,9 +10,9 @@ interface ThemeProviderProps {
 }
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
-    return (
-        <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
-            {children}
-        </MantineProvider>
-    );
+  return (
+    <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
+      {children}
+    </MantineProvider>
+  );
 }
