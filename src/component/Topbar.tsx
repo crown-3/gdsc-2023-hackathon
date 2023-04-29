@@ -3,11 +3,11 @@ import Logo from "../assets/oragi_horizontal.png";
 import AvatarButton from "./AvatarButton";
 
 const TopbarWrapper = styled.div`
-  display: flex;
-  min-height: 100px;
-  align-items: space-between;
-  padding: var(--min-padding);
-  justify-content: space-between;
+    display : flex;
+    min-height : 65px;
+    align-items : space-between;
+    padding : var(--min-padding);
+    justify-content : space-between;
 `;
 
 const LogoWrapper = styled.span`
