@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import LogoVertical from "../../assets/oragi_vertical.png";
 import Button from "../../component/Button";
+import UnderlinedText from "../../component/UnderlinedText";
 
 const PendingWrapper = styled.div`
     position : absolute;
@@ -38,13 +39,15 @@ const PhraseWrapper = styled.div`
     letter-spacing : .5rem;
 `;
 
-const ButtonWrapper = styled.span`
+const Wrapper = styled.span`
     position : absolute;
     bottom : 20%;
     left : 50%;
-    
+    display : inline-flex;
+    flex-direction : column;
     transform : translateX(-50%);
     margin : 0 auto;
+    gap : 10px;
 
 `
 
@@ -56,7 +59,10 @@ export default function Pending(){
                 <img src={LogoVertical}></img>
             </LogoWrapper>
             <PhraseWrapper>감정 조각을 찾아서...</PhraseWrapper>
-            <ButtonWrapper><Button label="연결하기"></Button></ButtonWrapper>
+            <Wrapper>
+                <Button label="연결하기"></Button>
+                <UnderlinedText label="아직 계정이 없으신가요?"></UnderlinedText>
+            </Wrapper>
         </PendingWrapper>
     );
 }
