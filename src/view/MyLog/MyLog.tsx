@@ -1,4 +1,4 @@
-import Collapsible from "../../component/Collapsible";
+import Collapsible from "../../component/Collapsible/Collapsible";
 import Container from "../../component/Container";
 import {TopbarBackButton} from "../../component/Topbar";
 import chainSample from "../../assets/chain-sample.png";

@@ -2,6 +2,16 @@ import Container from "../../component/Container";
 import styled from "styled-components";
 import LogoHori from "../../assets/oragi_horizontal.png";
 import Button from "../../component/Button";
+
+const WrapperOfWrapper = styled.div`
+    position :relative;
+    display : inline-flex;
+    min-height : 100vh;
+    min-width : 100vw;
+    align-items : center;
+    justify-content : center;
+`;
+
 const SignLogoWrapper = styled.div`
   position : absolute;
   display : inline-block;
@@ -109,6 +119,7 @@ const Button2 = styled.div`
 export default function SignIn(){
     return (
         <Container>
+            <WrapperOfWrapper>
             <SignLogoWrapper>
                 <img src={LogoHori}></img>
                 <PhraseWrapper>가입정보</PhraseWrapper>
@@ -155,7 +166,7 @@ export default function SignIn(){
                     <Button label="가입하기">연결하기</Button>
                 </Button2>
             </SignLogoWrapper>
-
+            </WrapperOfWrapper>
         </Container>
     );
 }

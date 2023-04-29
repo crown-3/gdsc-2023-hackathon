@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Logo from "../assets/oragi_horizontal.png";
 import AvatarButton from "./AvatarButton";
+import { useNavigate } from "react-router-dom";
 
 const TopbarWrapper = styled.div`
   display: flex;
@@ -42,9 +43,15 @@ export function TopbarLogo() {
 }
 
 export function TopbarBackButton(props: any) {
+  const navigate = useNavigate();
+
+  const handleBack = ()=>{  
+    navigate(-1);
+  };
+
   return (
     <TopbarWrapper>
-      <AvatarButton type="back"></AvatarButton>
+      <AvatarButton type="back" onClick={handleBack}></AvatarButton>
       <TitleWrapper>{props.title}</TitleWrapper>
       <AvatarButton type="blank"></AvatarButton>
     </TopbarWrapper>
