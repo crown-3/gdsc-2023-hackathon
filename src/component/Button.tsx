@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+interface ButtonProps {
+    label : string;
+    onClick? : (event: React.MouseEvent<HTMLElement>)=>void;
+}
+
 const ButtonWrapper = styled.div`
     display : inline-flex;
     align-items : center;
@@ -27,8 +32,8 @@ const ButtonWrapper = styled.div`
     }
 `;
 
-export default function Button(props:any) {
+export default function Button({label, onClick=()=>{}}:ButtonProps) {
     return (
-        <ButtonWrapper>{props.label}</ButtonWrapper>
+        <ButtonWrapper onClick={onClick}>{label}</ButtonWrapper>
     );
 }

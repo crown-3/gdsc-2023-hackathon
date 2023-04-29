@@ -3,8 +3,14 @@ import MainText from "../../component/MainText";
 import { TopbarLogo } from "../../component/Topbar";
 import MainInput from "../../component/Main/MainInput";
 import ThreadList from "../../component/Thread/ThreadList";
+import { getCookie } from "../../cookie";
 
 export default function Main() {
+
+  if(getCookie("accessToken")==undefined) {
+
+  }
+
   return (
     <Container>
       <TopbarLogo />

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import LogoVertical from "../../assets/oragi_vertical.png";
 import Button from "../../component/Button";
 import UnderlinedText from "../../component/UnderlinedText";
+import { useNavigate } from "react-router-dom";
 
 const PendingWrapper = styled.div`
     position : absolute;
@@ -53,6 +54,13 @@ const Wrapper = styled.span`
 
 
 export default function Pending(){
+    const navigate = useNavigate();
+    
+    const handleButton = ()=>{
+        console.log("hello");
+        navigate("/inbox");
+    };
+
     return (
         <PendingWrapper>
             <LogoWrapper>
@@ -60,7 +68,7 @@ export default function Pending(){
             </LogoWrapper>
             <PhraseWrapper>감정 조각을 찾아서...</PhraseWrapper>
             <Wrapper>
-                <Button label="연결하기"></Button>
+                <Button label="연결하기" onClick={handleButton}></Button>
                 <UnderlinedText label="아직 계정이 없으신가요?"></UnderlinedText>
             </Wrapper>
         </PendingWrapper>
