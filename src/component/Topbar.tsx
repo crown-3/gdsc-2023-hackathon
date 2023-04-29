@@ -11,36 +11,34 @@ const TopbarWrapper = styled.div`
 `;
 
 const LogoWrapper = styled.span`
-    display : inline-block;
-    max-width : 100px;
-    max-height : 30px;
-    
-    img { 
-        display : inline-block;
-        width : 100%;
-        height : 100%;
-    }
-`;
-const TitleWrapper = styled.span`    
-`;
+  display: inline-block;
+  max-width: 100px;
+  max-height: 30px;
 
+  img {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+  }
+`;
+const TitleWrapper = styled.span``;
 
 export function TopbarLogo() {
-    return (
-        <TopbarWrapper>
-            <LogoWrapper><img src={Logo}/></LogoWrapper>
-        </TopbarWrapper>
-    );
+  return (
+    <TopbarWrapper>
+      <LogoWrapper>
+        <img src={Logo} />
+      </LogoWrapper>
+    </TopbarWrapper>
+  );
 }
 
-export function TopbarBackButton(props:any) {
-    return (
-        <TopbarWrapper>
-            <AvatarButton type="back"></AvatarButton>
-            <TitleWrapper>
-                {props.title}
-            </TitleWrapper>
-            <AvatarButton type="blank"></AvatarButton>
-        </TopbarWrapper>
-    );
+export function TopbarBackButton(props: any) {
+  return (
+    <TopbarWrapper>
+      <AvatarButton type="back"></AvatarButton>
+      <TitleWrapper>{props.title}</TitleWrapper>
+      <AvatarButton type="blank"></AvatarButton>
+    </TopbarWrapper>
+  );
 }
