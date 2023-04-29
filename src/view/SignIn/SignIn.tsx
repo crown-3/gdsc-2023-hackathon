@@ -2,6 +2,9 @@ import Container from "../../component/Container";
 import styled from "styled-components";
 import LogoHori from "../../assets/oragi_horizontal.png";
 import Button from "../../component/Button";
+import { useNavigate } from "react-router-dom";
+import { getCookie, setCookie } from "../../cookie";
+import { useState } from "react";
 
 const WrapperOfWrapper = styled.div`
     position :relative;
@@ -11,6 +14,8 @@ const WrapperOfWrapper = styled.div`
     align-items : center;
     justify-content : center;
 `;
+
+
 
 const SignLogoWrapper = styled.div`
     position : absolute;
@@ -117,6 +122,37 @@ const Button2 = styled.div`
 `;
 
 export default function SignIn(){
+    const navigate = useNavigate();
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    if(getCookie("accessToken")!=undefined) {
+        navigate("/inbox",{state:{toastMessage : "logined"}});
+    }
+
+    const handleClick = ()=>{
+        fetch(`http://223.130.139.202:8080/user/login`, {
+            method: 'POST',
+            headers:{
+              "Content-Type": 'application/json;charset=UTF-8',
+            },
+            body: JSON.stringify({
+              username: username,
+              password: password,
+            }),
+          })
+            .then(response => response.json())
+            .then(res => {
+                console.log(res);
+              if (res.grantType) {
+                  setCookie("accessToken",res.accessToken);
+                  navigate("/inbox",{state: {toast : "logined successfully!"}});
+              }
+              else {}
+            });
+        
+    };
+
     return (
         <Container>
             <WrapperOfWrapper>
@@ -126,6 +162,7 @@ export default function SignIn(){
             <ID>
                 <input id = "id"
                        placeholder="아이디"
+                       value={username}
                        style={{
                            marginTop: "10px",
                            marginBottom:"10px",
@@ -141,11 +178,15 @@ export default function SignIn(){
 
                            backgroundColor : "var(--primary-color)",
                        }}
+                       onChange={(event:React.ChangeEvent<HTMLInputElement>)=>{
+                        setUsername(event.target.value);
+                       }}
                 />
             </ID>
             <PW>
                 <input id = "pw"
                        placeholder="비밀번호"
+                       value={password}
                        type='password'
                        style={{
                            marginTop: "10px",
@@ -160,10 +201,13 @@ export default function SignIn(){
                            paddingLeft:"10px",
                            backgroundColor : "var(--primary-color)",
                        }}
+                       onChange={(event:React.ChangeEvent<HTMLInputElement>)=>{
+                        setPassword(event.target.value);
+                       }}
                 />
             </PW>
             <Button2>
-                <Button label="연결하기">연결하기</Button>
+                <Button label="연결하기" onClick={handleClick}></Button>
             </Button2>
             </SignLogoWrapper>
             </WrapperOfWrapper>
