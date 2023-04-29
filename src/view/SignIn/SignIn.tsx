@@ -2,6 +2,8 @@ import Container from "../../component/Container";
 import styled from "styled-components";
 import LogoHori from "../../assets/oragi_horizontal.png";
 import Button from "../../component/Button";
+import { useNavigate } from "react-router-dom";
+import { getCookie } from "../../cookie";
 
 const WrapperOfWrapper = styled.div`
     position :relative;
@@ -11,6 +13,8 @@ const WrapperOfWrapper = styled.div`
     align-items : center;
     justify-content : center;
 `;
+
+
 
 const SignLogoWrapper = styled.div`
     position : absolute;
@@ -117,6 +121,16 @@ const Button2 = styled.div`
 `;
 
 export default function SignIn(){
+    const navigate = useNavigate();
+
+    if(getCookie("accessToken")!=undefined) {
+        navigate("/inbox",{state:{toastMessage : "logined"}});
+    }
+
+    const handleClick = ()=>{
+        navigate("inbox",{state: {toast : "logined as user"}});
+    };
+
     return (
         <Container>
             <WrapperOfWrapper>
@@ -163,7 +177,7 @@ export default function SignIn(){
                 />
             </PW>
             <Button2>
-                <Button label="연결하기">연결하기</Button>
+                <Button label="연결하기" onClick={handleClick}></Button>
             </Button2>
             </SignLogoWrapper>
             </WrapperOfWrapper>
