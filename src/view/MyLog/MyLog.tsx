@@ -5,6 +5,9 @@ import chainSample from "../../assets/chain-sample.png";
 import styled from "styled-components";
 import ThreadContent from "../../component/Thread/ThreadContent";
 import DateText from "../../component/DateText";
+import axios from "axios";
+import { getCookie, setCookie } from "../../cookie";
+import { useState } from "react";
 
 const SemiTitle = styled.div`
     font-size : var(--font-size-medium); 
@@ -24,9 +27,29 @@ const DateTextWrapper = styled.div`
     justify-content : center;
     margin : var(--min-padding) 0;
 `;
+var content_text="";
 
 
 export default function MyLog(){
+
+    const [isLoaded, setIsLoaded] = useState(false);
+    const getMyLog = async () => {
+        try {
+          const response = await axios.get(`http://gdsc-hackathon.p-e.kr:8080/posts`,{ 
+            headers : {
+              Authorization: `Bearer ${getCookie("accessToken")}`
+            }
+          });
+          content_text = response.data.posts[0].content;
+          console.log(response.data.posts[0].content);
+          setIsLoaded(true);
+        } catch (error) {
+          console.error(error);
+        }
+      }; 
+      
+      getMyLog();
+      console.log(content_text);
     return (
     <Container>
         <TopbarBackButton title="나와 연결된 오라기"/>
@@ -41,7 +64,10 @@ export default function MyLog(){
             <DateText content={"2023.04.30"}/>
         </DateTextWrapper>
         <ThreadWrap>
-            <ThreadContent content={"Hello"}></ThreadContent>
+
+            {isLoaded &&<>
+            <ThreadContent content={content_text}></ThreadContent>
+            </>}
         </ThreadWrap>
     </Container>
     );
