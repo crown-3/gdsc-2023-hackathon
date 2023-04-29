@@ -40,6 +40,7 @@ export default function ThreadEndBtn() {
           fontSize: "var(--font-size-medium)",
           marginRight: "15px",
           marginLeft: "20px",
+          color: "white",
         }}
       >
         끝맺기

@@ -13,14 +13,14 @@ const Wrap = styled.div<{ bgColor: string }>`
       ? `3px solid var(--stroke-color)`
       : `3px solid ${props.bgColor}`};
   background-color: ${(props) => props.bgColor};
-  color: ${(props) =>
-    props.bgColor === "var(--primary-color)" ? "var(--primary-font)" : "#FFF"};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
-const Content = styled.div`
+const Content = styled.div<{ bgColor: string }>`
   font-family: NanumMyeongjoBold;
   font-size: var(--font-size-small);
+  color: ${(props) =>
+    props.bgColor === "var(--primary-color)" ? "var(--primary-font)" : "white"};
   margin: 0 17px;
 `;
 
@@ -31,12 +31,14 @@ function getRandomVariable(): string {
 }
 
 export default function ThreadContent({ content }: IProps) {
+  const randomVariable = getRandomVariable();
+
   return (
-    <Wrap bgColor={getRandomVariable()}>
+    <Wrap bgColor={randomVariable}>
       <div style={{ marginTop: "12px" }}></div> {/* Margination */}
       <ThreadPunch />
       <div style={{ marginTop: "6px" }}></div> {/* Margination */}
-      <Content>{content}</Content>
+      <Content bgColor={randomVariable}>{content}</Content>
       <div style={{ marginTop: "6px" }}></div> {/* Margination */}
       <ThreadPunch />
       <div style={{ marginTop: "12px" }}></div> {/* Margination */}
