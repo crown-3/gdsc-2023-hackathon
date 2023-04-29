@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import AvatarButton from "./AvatarButton";
+import AvatarButton from "../AvatarButton";
+import "./style.module.css";
 
 const Wrapper = styled.div`
     position : relative;
@@ -21,10 +22,16 @@ const CloseButtonWrapper = styled.span`
 `;
 
 export default function Collapsible(props:any) {
+    const handleCollapse = (event: React.MouseEvent<HTMLElement>)=>{
+        console.log("hello");
+        const targetElement = event.currentTarget.parentElement!.parentElement!;
+        targetElement.parentElement!.removeChild(targetElement);
+    }
+
     return (
         <Wrapper>
             <CloseButtonWrapper>
-                <AvatarButton type="close"></AvatarButton>
+                <AvatarButton type="close" onClick={handleCollapse}></AvatarButton>
             </CloseButtonWrapper>
             {props.children}
         </Wrapper>
