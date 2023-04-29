@@ -4,7 +4,7 @@ import {TopbarBackButton} from "../../component/Topbar";
 export default function WriteOrigin(){
     return (
     <Container>
-        <TopbarBackButton>Topbar</TopbarBackButton>
+        <TopbarBackButton title="오늘의 글 쓰기"/>
     </Container>
     );
 }

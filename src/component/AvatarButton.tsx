@@ -22,13 +22,13 @@ export default function AvatarButton(props:any="back") {
             srcRef = BackImg; break;
         }
         default : {
-            srcRef = BackImg; break;
+            srcRef = "blank"; break;
         }
     }
 
     return (
         <AvatarWrapper>
-            <img src={srcRef}/>
+            {srcRef!=="blank"?<img src={srcRef}/>:<></>}
         </AvatarWrapper>
     );
 }

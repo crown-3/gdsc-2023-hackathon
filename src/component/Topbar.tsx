@@ -7,7 +7,7 @@ const TopbarWrapper = styled.div`
     min-height : 100px;
     align-items : space-between;
     padding : var(--min-padding);
-
+    justify-content : space-between;
 `;
 
 const LogoWrapper = styled.span`
@@ -21,7 +21,8 @@ const LogoWrapper = styled.span`
         height : 100%;
     }
 `;
-const TitleWrapper = styled.span``;
+const TitleWrapper = styled.span`    
+`;
 
 
 export function TopbarLogo() {
@@ -39,6 +40,7 @@ export function TopbarBackButton(props:any) {
             <TitleWrapper>
                 {props.title}
             </TitleWrapper>
+            <AvatarButton type="blank"></AvatarButton>
         </TopbarWrapper>
     );
 }
