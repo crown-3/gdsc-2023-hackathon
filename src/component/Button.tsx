@@ -11,8 +11,9 @@ const ButtonWrapper = styled.div`
     text-justify : center; 
     overflow : show;
     background-color : transparent;
+    font-family: 'NanumMyeongjoBold';
     
-    &:after {
+    ::after {
         content: "";
         position : absolute;
         bottom : 1em;

@@ -21,7 +21,9 @@ const LogoWrapper = styled.span`
     height: 100%;
   }
 `;
-const TitleWrapper = styled.span``;
+const TitleWrapper = styled.span`
+  font-family: 'NanumMyeongjoBold';
+`;
 
 export function TopbarLogo() {
   return (
