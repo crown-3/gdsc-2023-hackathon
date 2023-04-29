@@ -23,7 +23,7 @@ export default function Main() {
       <MainText content={"아직 남기지 않으셨네요!"}></MainText>
       <span
         onClick={() => {
-          navigation("/write-origin");
+          navigate("/write-origin");
         }}
       >
         <MainInput />
