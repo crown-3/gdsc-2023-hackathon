@@ -37,9 +37,9 @@ export default function ThreadContent({ content }: IProps) {
     <Wrap bgColor={randomVariable}>
       <div style={{ marginTop: "12px" }}></div> {/* Margination */}
       <ThreadPunch />
-      <div style={{ marginTop: "6px" }}></div> {/* Margination */}
+      <div style={{ marginTop: "8px" }}></div> {/* Margination */}
       <Content bgColor={randomVariable}>{content}</Content>
-      <div style={{ marginTop: "6px" }}></div> {/* Margination */}
+      <div style={{ marginTop: "8px" }}></div> {/* Margination */}
       <ThreadPunch />
       <div style={{ marginTop: "12px" }}></div> {/* Margination */}
     </Wrap>
