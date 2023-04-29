@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 export default function Main() {
   const navigate = useNavigate();
 
-  if(getCookie("accessToken")==undefined) {
+  if (getCookie("accessToken") == undefined) {
     console.log("no cookie");
     navigate("/signin");
   }
@@ -23,7 +23,7 @@ export default function Main() {
       <MainText content={"아직 남기지 않으셨네요!"}></MainText>
       <span
         onClick={() => {
-          navigation("/write-origin");
+          navigate("/write-origin");
         }}
       >
         <MainInput />
@@ -32,7 +32,9 @@ export default function Main() {
       <MainText content={"당신을 위해 존재해 온 글들"}></MainText>
       <div style={{ marginTop: "15px" }}></div> {/* Margination */}
       <ThreadList threadId={1} />
+      <div style={{ marginTop: "80px" }}></div> {/* Margination */}
       <ThreeStars />
+      <div style={{ marginTop: "40px" }}></div> {/* Margination */}
       <Navigation page="home" />
     </Container>
   );

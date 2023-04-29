@@ -22,6 +22,7 @@ export default function ThreadList({ threadId }: IProps) {
 
   function getIsOpen(threadInput: ThreadInputI[], threadId: number): boolean {
     const thread = threadInput.find((thread) => thread.threadId === threadId);
+
     return thread ? thread.isOpen : false;
   }
 
@@ -51,7 +52,9 @@ export default function ThreadList({ threadId }: IProps) {
       <ThreadContent content="할 건 많고, 시간은 부족하네요..ㅠㅠ 시간이 참 속절없습니다" />
       <ThreadRingConnection />
       {getIsOpen(threadInput, threadId) ? (
-        <ThreadInput threadId={threadId} />
+        <span>
+          <ThreadInput threadId={threadId} />
+        </span>
       ) : (
         <span>
           <span
