@@ -7,7 +7,8 @@ import MyLog from './view/MyLog/MyLog';
 import WriteOrigin from './view/WriteOrigin/WriteOrigin';
 import "./styles/common.css";
 import Pending from './view/Pending/Pending.tsx';
-
+import SignIn from './view/SignIn/SignIn.tsx';
+import SignUp from './view/SignUp/SignUp.tsx';
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -18,6 +19,8 @@ export default function App() {
           <Route path="/my-log" element={<MyLog />}></Route>
           <Route path="/write-origin" element={<WriteOrigin />}></Route>
           <Route path="/pending" element={<Pending />}></Route>
+          <Route path="/signin" element={<SignIn />}></Route>
+          <Route path="/signup" element={<SignUp />}></Route>
 				</Routes>
 			</BrowserRouter>
     </ThemeProvider>
