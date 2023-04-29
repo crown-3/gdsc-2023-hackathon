@@ -9,6 +9,8 @@ import "./styles/common.css";
 import Pending from './view/Pending/Pending.tsx';
 import SignIn from './view/SignIn/SignIn.tsx';
 import SignUp from './view/SignUp/SignUp.tsx';
+import Specific from "./view/Specific/Specific.tsx";
+import Feed from "./view/Feed/Feed.tsx";
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -21,6 +23,8 @@ export default function App() {
           <Route path="/pending" element={<Pending />}></Route>
           <Route path="/signin" element={<SignIn />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
+          <Route path="/specific" element={<Specific />}></Route>
+          <Route path="/feed" element={<Feed />}></Route>
 				</Routes>
 			</BrowserRouter>
     </ThemeProvider>
