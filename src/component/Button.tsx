@@ -16,11 +16,12 @@ const ButtonWrapper = styled.div`
     ::after {
         content: "";
         position : absolute;
-        bottom : 1em;
+        bottom : 25px;
         right : 1em;
         width : 25px;
         height : 25px;
-        background-image: url('../src/assets/stars.png');
+      background-size: auto 100%;
+        background-image: url('../src/assets/underBarStars.png');
         background-repeat: no-repeat;
         z-index : 1 ;
 

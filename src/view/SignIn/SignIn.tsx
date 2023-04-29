@@ -1,7 +1,7 @@
 import Container from "../../component/Container";
 import styled from "styled-components";
 import LogoHori from "../../assets/oragi_horizontal.png";
-
+import Button from "../../component/Button";
 const SignLogoWrapper = styled.div`
     position : absolute;
     display : inline-block;
@@ -50,8 +50,8 @@ const ID = styled.div`
     background-size:auto 100%;
     position : absolute;
     bottom : -5px;
-    
-    right : -5px;
+
+    left: -5px;
     
     width : 20px;
     height : 20px;
@@ -79,9 +79,8 @@ const PW = styled.div`
     background-size:auto 100%;
     position : absolute;
     bottom : -5px;
-    bottom : -5px;
 
-    right : -5px;
+    right: -5px;
 
     width : 20px;
     height : 20px;
@@ -91,7 +90,7 @@ const PW = styled.div`
   }
 `;
 
-const Button = styled.div`
+const Button2 = styled.div`
 
     position : absolute;
     display : inline-block;
@@ -121,7 +120,7 @@ export default function SignIn(){
                            marginBottom:"10px",
                            top: "100%",
                            outline: "none",
-
+                           paddingLeft:"10px",
                            fontSize: "10px",
                            fontFamily: 'NanumMyeongjoBold',
 
@@ -147,12 +146,14 @@ export default function SignIn(){
                            border: "none",
                            borderBottom:"1px",
                            width:'100px',
-
+                           paddingLeft:"10px",
                            backgroundColor : "var(--primary-color)",
                        }}
                 />
             </PW>
-            <Button>연결하기</Button>
+            <Button2>
+                <Button label="연결하기">연결하기</Button>
+            </Button2>
             </SignLogoWrapper>
 
         </Container>

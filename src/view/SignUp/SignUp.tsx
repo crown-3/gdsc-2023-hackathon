@@ -1,58 +1,58 @@
 import Container from "../../component/Container";
 import styled from "styled-components";
 import LogoHori from "../../assets/oragi_horizontal.png";
-
+import Button from "../../component/Button";
 const SignLogoWrapper = styled.div`
-    position : absolute;
+  position : absolute;
+  display : inline-block;
+  top : 50%;
+  left : 50%;
+  transform : translate(-50%, -50%);
+  width : 130px;
+  height : 380px;
+
+  img {
     display : inline-block;
-    top : 50%;
-    left : 50%;
-    transform : translate(-50%, -50%);
-    width : 130px;
-    height : 380px;
-    
-    img {
-        display : inline-block;
-        width : 100%;
-        height : 10%;
-    }
+    width : 100%;
+    height : 10%;
+  }
 `;
 
 const PhraseWrapper = styled.div`
-    position : absolute;
-    display : inline-block;
-    top : 30%;
-    left : 50%;
-    transform : translate(-50%, -50%);
-    width: 100%;
-    text-align: center;
-    letter-spacing : .1rem;
-    font-size: 15px;
-    font-family: 'NanumMyeongjoExtraBold';
+  position : absolute;
+  display : inline-block;
+  top : 30%;
+  left : 50%;
+  transform : translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  letter-spacing : .1rem;
+  font-size: 15px;
+  font-family: 'NanumMyeongjoExtraBold';
 `;
 
 const ID = styled.div`
 
-    position : absolute;
-    display : inline-block;
-    top : 45%;
-    left : 50%;
-    transform : translate(-50%, -50%);
-    width: 130px;
-    text-align: center;
-    letter-spacing : .1rem;
-    font-family: 'NanumMyeongjoBold';
-    border-bottom: 1px solid black;
-    backgorund-color : none;
-  
+  position : absolute;
+  display : inline-block;
+  top : 45%;
+  left : 50%;
+  transform : translate(-50%, -50%);
+  width: 130px;
+  text-align: center;
+  letter-spacing : .1rem;
+  font-family: 'NanumMyeongjoBold';
+  border-bottom: 1px solid black;
+  backgorund-color : none;
+
   &:after {
     content: "";
     background-size:auto 100%;
     position : absolute;
     bottom : -5px;
-    
-    right : -5px;
-    
+
+    left: -5px;
+
     width : 20px;
     height : 20px;
     background-image: url('../../../src/assets/underBarStars.png');
@@ -63,25 +63,24 @@ const ID = styled.div`
 
 const PW = styled.div`
 
-    position : absolute;
-    display : inline-block;
-    top : 65%;
-    left : 50%;
-    transform : translate(-50%, -50%);
-    width: 130px;
-    text-align: center;
-    letter-spacing : .1rem;
-   
-    font-family: 'NanumMyeongjoBold';
+  position : absolute;
+  display : inline-block;
+  top : 65%;
+  left : 50%;
+  transform : translate(-50%, -50%);
+  width: 130px;
+  text-align: center;
+  letter-spacing : .1rem;
+
+  font-family: 'NanumMyeongjoBold';
   border-bottom: 1px solid black;
   &:after {
     content: "";
     background-size:auto 100%;
     position : absolute;
     bottom : -5px;
-    bottom : -5px;
 
-    right : -5px;
+    right: -5px;
 
     width : 20px;
     height : 20px;
@@ -91,23 +90,23 @@ const PW = styled.div`
   }
 `;
 
-const Button = styled.div`
+const Button2 = styled.div`
 
-    position : absolute;
-    display : inline-block;
-    top : 85%;
-    left : 50%;
-    transform : translate(-50%, -50%);
-    width: 100%;
-    text-align: center;
-    letter-spacing : .1rem;
-    font-family: 'NanumMyeongjoBold';
-    font-size: 12px; 
-    top-margin: 10px;
-    bottom-margin: 10px;
+  position : absolute;
+  display : inline-block;
+  top : 85%;
+  left : 50%;
+  transform : translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  letter-spacing : .1rem;
+  font-family: 'NanumMyeongjoBold';
+  font-size: 12px;
+  top-margin: 10px;
+  bottom-margin: 10px;
 `;
 
-export default function SignUp(){
+export default function SignIn(){
     return (
         <Container>
             <SignLogoWrapper>
@@ -121,7 +120,7 @@ export default function SignUp(){
                                marginBottom:"10px",
                                top: "100%",
                                outline: "none",
-
+                               paddingLeft:"10px",
                                fontSize: "10px",
                                fontFamily: 'NanumMyeongjoBold',
 
@@ -147,12 +146,14 @@ export default function SignUp(){
                                border: "none",
                                borderBottom:"1px",
                                width:'100px',
-
+                               paddingLeft:"10px",
                                backgroundColor : "var(--primary-color)",
                            }}
                     />
                 </PW>
-                <Button>가입하기</Button>
+                <Button2>
+                    <Button label="가입하기">연결하기</Button>
+                </Button2>
             </SignLogoWrapper>
 
         </Container>
