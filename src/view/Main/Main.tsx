@@ -3,6 +3,7 @@ import MainText from "../../component/MainText";
 import { TopbarLogo } from "../../component/Topbar";
 import MainInput from "../../component/Main/MainInput";
 import ThreadList from "../../component/Thread/ThreadList";
+import Navigation from "../../component/Navigation";
 
 export default function Main() {
   return (
@@ -15,6 +16,7 @@ export default function Main() {
       <MainText content={"당신을 위해 존재해 온 글들"}></MainText>
       <div style={{ marginTop: "15px" }}></div> {/* Margination */}
       <ThreadList />
+      <Navigation page="home" />
     </Container>
   );
 }

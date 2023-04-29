@@ -1,18 +1,15 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-    position : absolute;
-    top : 0;
-    bottom : 0;
-    right : 0;
-    left : 0;
-    max-width : 414px;
-    margin : 0 auto;
-    background-color : var(--primary-color);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  max-width: 414px;
+  margin: 0 auto;
+  background-color: var(--primary-color);
 `;
 
-export default function Container(props:any) {
-    return (
-        <Wrapper>{props.children}</Wrapper>
-    );
+export default function Container(props: any) {
+  return <Wrapper>{props.children}</Wrapper>;
 }

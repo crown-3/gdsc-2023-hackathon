@@ -3,11 +3,17 @@ import Logo from "../assets/oragi_horizontal.png";
 import AvatarButton from "./AvatarButton";
 
 const TopbarWrapper = styled.div`
-    display : flex;
-    min-height : 65px;
-    align-items : space-between;
-    padding : var(--min-padding);
-    justify-content : space-between;
+  display: flex;
+  min-height: 65px;
+  align-items: space-between;
+  padding: var(--min-padding);
+  justify-content: space-between;
+
+  background-color: #fffff080;
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 `;
 
 const LogoWrapper = styled.span`
@@ -22,7 +28,7 @@ const LogoWrapper = styled.span`
   }
 `;
 const TitleWrapper = styled.span`
-  font-family: 'NanumMyeongjoBold';
+  font-family: "NanumMyeongjoBold";
 `;
 
 export function TopbarLogo() {

@@ -55,5 +55,69 @@ interface FilledProps {
 }
 
 export function HomeSvg({ filled }: FilledProps) {
-  return filled ? <></> : <></>;
+  return filled ? (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2F2F2F">
+      <path d="M0 0h24v24H0V0z" fill="none" />
+      <path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
+    </svg>
+  ) : (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2F2F2F">
+      <path d="M0 0h24v24H0V0z" fill="none" />
+      <path d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z" />
+    </svg>
+  );
+}
+
+export function FeedSvg({ filled }: FilledProps) {
+  return filled ? (
+    <svg viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M8.5 0L10.1228 6.87719L17 8.5L10.1228 10.1228L8.5 17L6.87719 10.1228L0 8.5L6.87719 6.87719L8.5 0Z"
+        fill="#2F2F2F"
+      />
+    </svg>
+  ) : (
+    <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M15 3L17.3865 13.1135L27.5 15.5L17.3865 17.8865L15 28L12.6135 17.8865L2.5 15.5L12.6135 13.1135L15 3Z"
+        stroke="#2F2F2F"
+        stroke-width="2"
+      />
+    </svg>
+  );
+}
+
+export function ProfileSvg({ filled }: FilledProps) {
+  return filled ? (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      enable-background="new 0 0 24 24"
+      viewBox="0 0 24 24"
+      fill="#2F2F2F"
+    >
+      <g>
+        <rect fill="none" height="24" width="24" />
+      </g>
+      <g>
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88C7.55 15.8 9.68 15 12 15s4.45.8 6.14 2.12C16.43 19.18 14.03 20 12 20z" />
+      </g>
+    </svg>
+  ) : (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      enable-background="new 0 0 24 24"
+      viewBox="0 0 24 24"
+      fill="#2F2F2F"
+    >
+      <g>
+        <rect fill="none" height="24" width="24" />
+      </g>
+      <g>
+        <g>
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM7.35 18.5C8.66 17.56 10.26 17 12 17s3.34.56 4.65 1.5c-1.31.94-2.91 1.5-4.65 1.5s-3.34-.56-4.65-1.5zm10.79-1.38C16.45 15.8 14.32 15 12 15s-4.45.8-6.14 2.12C4.7 15.73 4 13.95 4 12c0-4.42 3.58-8 8-8s8 3.58 8 8c0 1.95-.7 3.73-1.86 5.12z" />
+          <path d="M12 6c-1.93 0-3.5 1.57-3.5 3.5S10.07 13 12 13s3.5-1.57 3.5-3.5S13.93 6 12 6zm0 5c-.83 0-1.5-.67-1.5-1.5S11.17 8 12 8s1.5.67 1.5 1.5S12.83 11 12 11z" />
+        </g>
+      </g>
+    </svg>
+  );
 }
