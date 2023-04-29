@@ -1,6 +1,7 @@
 :root {
-    --min-padding : 2rem;
+    --min-padding : 24px;
     --primary-color : #fffff0;
+    --primary-font : #2F2F2F;
 }
 
 * {
