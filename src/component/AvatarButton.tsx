@@ -3,6 +3,12 @@ import BackImg from "../assets/back.png";
 import SendImg from "../assets/send.png";
 import CloseImg from "../assets/close.png";
 
+interface ButtonProp {
+    type: string;
+    onClick?: (event: React.MouseEvent<HTMLElement>)=>void;
+}
+
+
 const AvatarWrapper = styled.div`
     position : inline-block;
     height : 25px;
@@ -15,11 +21,11 @@ const AvatarWrapper = styled.div`
     }
 `;
 
-export default function AvatarButton(props:any="back") {
+export default function AvatarButton({type, onClick=()=>{}}:ButtonProp) {
 
     let srcRef:any = BackImg;
 
-    switch(props.type) {
+    switch(type) {
         case "back": {
             srcRef = BackImg; break;
         }
@@ -35,7 +41,7 @@ export default function AvatarButton(props:any="back") {
     }
 
     return (
-        <AvatarWrapper>
+        <AvatarWrapper onClick={onClick}>
             {srcRef!=="blank"?<img src={srcRef}/>:<></>}
         </AvatarWrapper>
     );

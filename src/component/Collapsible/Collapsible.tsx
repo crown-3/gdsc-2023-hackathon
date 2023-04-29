@@ -23,9 +23,9 @@ const CloseButtonWrapper = styled.span`
 
 export default function Collapsible(props:any) {
     const handleCollapse = (event: React.MouseEvent<HTMLElement>)=>{
-        console.log()
-        const targetNode = event.currentTarget;
-        targetNode.classList.toggle("hide");
+        console.log("hello");
+        const targetElement = event.currentTarget.parentElement!.parentElement!;
+        targetElement.parentElement!.removeChild(targetElement);
     }
 
     return (
