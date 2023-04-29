@@ -4,7 +4,7 @@ import AvatarButton from "./AvatarButton";
 
 const TopbarWrapper = styled.div`
     display : flex;
-    min-height : 100px;
+    min-height : 65px;
     align-items : space-between;
     padding : var(--min-padding);
     justify-content : space-between;
