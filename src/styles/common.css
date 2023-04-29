@@ -1,8 +1,23 @@
 :root {
     --min-padding : 24px;
+
     --primary-color : #fffff0;
     --primary-font : #2F2F2F;
-    --font-size-h1 : 26px;
+    --placeholder-font : #777777;
+    --stroke-color : #717171;
+
+    --lemon: #FFFF8D;
+    --lemon-stroke: #D8DA7A;
+
+    --tulip: #FF7979;
+    --tulip-stroke: #CB5D3A;
+
+    --card-1: #2F2F2F;
+    --card-2: #474747;
+
+    --font-size-h1 : 28px;
+    --font-size-medium : 18px;
+    --font-size-small : 16px;
 }
 
 * {
