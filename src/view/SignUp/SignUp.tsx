@@ -2,6 +2,19 @@ import Container from "../../component/Container";
 import styled from "styled-components";
 import LogoHori from "../../assets/oragi_horizontal.png";
 import Button from "../../component/Button";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { getCookie, removeCookie } from "../../cookie";
+
+const WrapperOfWrapper = styled.div`
+    position :relative;
+    display : inline-flex;
+    min-height : 100vh;
+    min-width : 100vw;
+    align-items : center;
+    justify-content : center;
+`;
+
 const SignLogoWrapper = styled.div`
   position : absolute;
   display : inline-block;
@@ -106,7 +119,33 @@ const Button2 = styled.div`
   bottom-margin: 10px;
 `;
 
-export default function SignIn(){
+export default function SignUp(){
+  const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  if(getCookie("accessToken")!=undefined) {removeCookie("accessToken");}
+
+    const handleSignUp = () =>{
+      fetch(`http://223.130.139.202:8080/user/signup`, {
+            method: 'POST',
+            headers:{
+              "Content-Type": 'application/json;charset=UTF-8',
+            },
+            body: JSON.stringify({
+              username: username,
+              password: password,
+            }),
+          })
+            .then(response => {
+              if (response.status == 200) {
+                  navigate("/signin",{state: {toast : "user signed up successfully!"}});
+              }
+              else {}
+            });
+    }
+
+
     return (
         <Container>
             <SignLogoWrapper>
@@ -115,6 +154,7 @@ export default function SignIn(){
                 <ID>
                     <input id = "id"
                            placeholder="아이디"
+                           value={username}
                            style={{
                                marginTop: "10px",
                                marginBottom:"10px",
@@ -123,19 +163,23 @@ export default function SignIn(){
                                paddingLeft:"10px",
                                fontSize: "10px",
                                fontFamily: 'NanumMyeongjoBold',
-
                                border: "none",
                                borderBottom:"1px",
                                width:'100px',
 
                                backgroundColor : "var(--primary-color)",
                            }}
+                           onChange={(event:React.ChangeEvent<HTMLInputElement>)=>{
+                            setUsername(event.target.value);
+                           }}
+
                     />
                 </ID>
                 <PW>
                     <input id = "pw"
                            placeholder="비밀번호"
                            type='password'
+                           value={password}
                            style={{
                                marginTop: "10px",
                                marginBottom:"10px",
@@ -149,10 +193,13 @@ export default function SignIn(){
                                paddingLeft:"10px",
                                backgroundColor : "var(--primary-color)",
                            }}
+                           onChange={(event:React.ChangeEvent<HTMLInputElement>)=>{
+                            setPassword(event.target.value);
+                           }}
                     />
                 </PW>
                 <Button2>
-                    <Button label="가입하기">연결하기</Button>
+                    <Button label="가입하기" onClick={handleSignUp}></Button>
                 </Button2>
             </SignLogoWrapper>
 

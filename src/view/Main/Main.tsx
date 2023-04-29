@@ -4,11 +4,14 @@ import { TopbarLogo } from "../../component/Topbar";
 import MainInput from "../../component/Main/MainInput";
 import ThreadList from "../../component/Thread/ThreadList";
 import { getCookie } from "../../cookie";
+import { useNavigate } from "react-router-dom";
 
 export default function Main() {
+  const navigate = useNavigate();
 
   if(getCookie("accessToken")==undefined) {
-
+    console.log("no cookie");
+    navigate("/signin");
   }
 
   return (
