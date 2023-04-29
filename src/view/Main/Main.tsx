@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import Container from "../../component/Container";
 import MainText from "../../component/MainText";
 import { TopbarLogo } from "../../component/Topbar";

@@ -4,7 +4,7 @@ const Hole = styled.div`
   width: 16px;
   height: 16px;
   border-radius: 50px;
-  background-color: var(--primary-colors);
+  background-color: var(--primary-color);
   border: 3px solid var(--stroke-color);
   margin-left: 13px;
 `;

@@ -3,7 +3,6 @@ import ThreadPunch from "./ThreadPunch";
 
 interface IProps {
   content: string;
-  color?: string;
 }
 
 const Wrap = styled.div<{ bgColor: string }>`
@@ -13,21 +12,27 @@ const Wrap = styled.div<{ bgColor: string }>`
     props.bgColor === "var(--primary-color)"
       ? `3px solid var(--stroke-color)`
       : `3px solid ${props.bgColor}`};
+  background-color: ${(props) => props.bgColor};
+  color: ${(props) =>
+    props.bgColor === "var(--primary-color)" ? "var(--primary-font)" : "#FFF"};
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
 const Content = styled.div`
   font-family: NanumMyeongjoBold;
   font-size: var(--font-size-small);
-  color: var(--primary-font);
   margin: 0 17px;
 `;
 
-export default function ThreadContent({
-  content,
-  color = "var(--primary-color)",
-}: IProps) {
+function getRandomVariable(): string {
+  const variables = ["var(--card-1)", "var(--card-2)", "var(--primary-color)"];
+  const randomIndex = Math.floor(Math.random() * variables.length);
+  return variables[randomIndex];
+}
+
+export default function ThreadContent({ content }: IProps) {
   return (
-    <Wrap bgColor={color}>
+    <Wrap bgColor={getRandomVariable()}>
       <div style={{ marginTop: "12px" }}></div> {/* Margination */}
       <ThreadPunch />
       <div style={{ marginTop: "6px" }}></div> {/* Margination */}

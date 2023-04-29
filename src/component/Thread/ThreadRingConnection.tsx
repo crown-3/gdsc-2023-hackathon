@@ -7,6 +7,8 @@ export default function ThreadRingConnection() {
         marginTop: "-23px",
         marginBottom: "-29px",
         marginLeft: "5px",
+        zIndex: 100,
+        position: "relative",
       }}
     >
       <ThreadRing />
