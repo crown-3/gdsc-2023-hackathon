@@ -120,7 +120,7 @@ export default function SignIn(){
     }
 
     const handleClick = ()=>{
-        fetch(`http://223.130.139.202:8080/user/login`, {
+        fetch(`http://gdsc-hackathon.p-e.kr:8080/user/login`, {
             method: 'POST',
             headers:{
               "Content-Type": 'application/json;charset=UTF-8',

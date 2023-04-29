@@ -1,6 +1,12 @@
 import styled from "styled-components";
 import AvatarButton from "./AvatarButton";
 import WordCount from "./WordCount";
+import {Ref} from "react";
+
+interface InputAreaProp {
+    ref: Ref<HTMLTextAreaElement>;
+    onSubmit: ()=>void;
+}
 
 const InputAreaWrapper = styled.div`
     position : relative;
@@ -42,13 +48,13 @@ const SendButtonWrapper = styled.span`
     bottom :10px;
 `;
 
-export default function InputArea() {
+export default function InputArea({ref, onSubmit}:InputAreaProp) {
     return (
         <InputAreaWrapper>
-            <TextareaWrapper  placeholder="오늘은 어떤 일이 있으셨나요?"/>
+            <TextareaWrapper ref={ref} placeholder="오늘은 어떤 일이 있으셨나요?"/>
             <WordCount count={0} max={300}/>
             <SendButtonWrapper>
-                <AvatarButton type="send"></AvatarButton>
+                <AvatarButton type="send" onClick={onSubmit}></AvatarButton>
             </SendButtonWrapper>
         </InputAreaWrapper>
     );
