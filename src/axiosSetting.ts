@@ -5,6 +5,20 @@ const axiosInstance: AxiosInstance = axios.create({
   baseURL: "http://gdsc-hackathon.p-e.kr:8080",
 });
 
+// async function fetchTimes(type: string) {
+//   try {
+//     const { data, status } = await axiosInstance.get(`/${type}`);
+//     setData(data);
+//   } catch (e) {
+//     if (axios.isAxiosError(e)) {
+//       console.log("error message: ", e.message);
+//       return e.message;
+//     } else {
+//       console.log("unexpected error: ", e);
+//       return "An unexpected error occurred.";
+//     }
+//   }
+// }
 axiosInstance.interceptors.request.use(config => {
   if (!config.headers) return config;
 
