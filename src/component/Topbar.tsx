@@ -1,24 +1,44 @@
 import styled from "styled-components";
+import Logo from "../assets/oragi_horizontal.png";
+import AvatarButton from "./AvatarButton";
 
-const Wrapper = styled.div`
+const TopbarWrapper = styled.div`
     display : flex;
     min-height : 100px;
-    opacity : .8;
-    filter : blur(2rem);
     align-items : space-between;
     padding : var(--min-padding);
+
 `;
 
-export function TopbarLogo(props:any) {
+const LogoWrapper = styled.span`
+    display : inline-block;
+    max-width : 100px;
+    max-height : 30px;
+    
+    img { 
+        display : inline-block;
+        width : 100%;
+        height : 100%;
+    }
+`;
+const TitleWrapper = styled.span``;
+
+
+export function TopbarLogo() {
     return (
-        <Wrapper>
-            {props.children}
-        </Wrapper>
+        <TopbarWrapper>
+            <LogoWrapper><img src={Logo}/></LogoWrapper>
+        </TopbarWrapper>
     );
 }
 
 export function TopbarBackButton(props:any) {
     return (
-        <Wrapper>{props.children}</Wrapper>
+        <TopbarWrapper>
+            <AvatarButton type="back"></AvatarButton>
+            <TitleWrapper>
+                {props.title}
+            </TitleWrapper>
+        </TopbarWrapper>
     );
 }
