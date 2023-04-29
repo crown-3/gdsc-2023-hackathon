@@ -5,11 +5,14 @@ import MainInput from "../../component/Main/MainInput";
 import ThreadList from "../../component/Thread/ThreadList";
 import Navigation from "../../component/Navigation";
 import { getCookie } from "../../cookie";
+import { useNavigate } from "react-router-dom";
 
 export default function Main() {
+  const navigate = useNavigate();
 
   if(getCookie("accessToken")==undefined) {
-
+    console.log("no cookie");
+    navigate("/signin");
   }
 
   return (
