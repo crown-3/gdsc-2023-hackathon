@@ -6,6 +6,7 @@ import Main from './view/Main/Main';
 import MyLog from './view/MyLog/MyLog';
 import WriteOrigin from './view/WriteOrigin/WriteOrigin';
 import "./styles/common.css";
+import Pending from './view/Pending/Pending.tsx';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
 					<Route path="/" element={<Main />}></Route>
           <Route path="/my-log" element={<MyLog />}></Route>
           <Route path="/write-origin" element={<WriteOrigin />}></Route>
+          <Route path="/pending" element={<Pending />}></Route>
 				</Routes>
 			</BrowserRouter>
     </ThemeProvider>

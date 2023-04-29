@@ -1,6 +1,10 @@
 :root {
     --min-padding : 2rem;
     --primary-color : #fffff0;
+    --secondary-color : #2F2F2F;
+
+    --font-size-h1 : 26px;
+
 }
 
 * {
