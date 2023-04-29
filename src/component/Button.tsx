@@ -23,7 +23,6 @@ const ButtonWrapper = styled.div`
         background-image: url('../src/assets/stars.png');
         background-repeat: no-repeat;
         z-index : 1 ;
-
     }
 `;
 
