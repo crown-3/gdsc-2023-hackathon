@@ -49,3 +49,11 @@ export function ScissorsSvg() {
     </svg>
   );
 }
+
+interface FilledProps {
+  filled: boolean;
+}
+
+export function HomeSvg({ filled }: FilledProps) {
+  return filled ? <></> : <></>;
+}

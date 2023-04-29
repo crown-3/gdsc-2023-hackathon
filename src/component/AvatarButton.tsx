@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import BackImg from "../assets/back.png";
 import SendImg from "../assets/send.png";
+import CloseImg from "../assets/close.png";
 
 const AvatarWrapper = styled.div`
     position : inline-block;
@@ -24,6 +25,9 @@ export default function AvatarButton(props:any="back") {
         }
         case "send": {
             srcRef = SendImg; break;
+        }
+        case "close": {
+            srcRef = CloseImg; break;
         }
         default : {
             srcRef = "blank"; break;
