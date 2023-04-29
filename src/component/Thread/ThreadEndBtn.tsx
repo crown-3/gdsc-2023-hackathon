@@ -18,6 +18,7 @@ const Wrap = styled.div`
   margin-top: 3px;
 
   transform: rotate(36deg);
+  cursor: pointer;
 `;
 
 const Hole = styled.div`

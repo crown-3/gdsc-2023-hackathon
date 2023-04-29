@@ -33,7 +33,7 @@ export default function ThreadStart() {
           width: "10px",
           height: "10px",
           position: "relative",
-          top: "-18px",
+          top: "-15px",
           left: "-15px",
         }}
       >

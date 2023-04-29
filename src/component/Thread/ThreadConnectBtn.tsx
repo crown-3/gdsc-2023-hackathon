@@ -15,6 +15,7 @@ const Wrap = styled.div`
 
   position: relative;
   z-index: 1;
+  cursor: pointer;
 `;
 
 const Hole = styled.div`
