@@ -10,32 +10,10 @@ import { useNavigate } from "react-router-dom";
 import React, {useEffect} from "react";
 import axiosInstance from "../../axiosSetting";
 import axios from "axios";
+import DidWriteToday from "../../component/didWriteToday";
 
 export default function Main() {
   const navigate = useNavigate();
-
-  const [didWriteToday, setDidWriteToday] = React.useState<boolean>(false);
-
-  const fetchDidWrite = async () => {
-    try {
-      const {data} = await axiosInstance.get('/user/today');
-      setDidWriteToday(data);
-    } catch (e) {
-      if (axios.isAxiosError(e)) {
-      console.log("error message: ", e.message);
-      return e.message;
-    } else {
-      console.log("unexpected error: ", e);
-      return "An unexpected error occurred.";
-      }
-    }
-  }
-
-  useEffect(() => {
-    fetchDidWrite();
-  }, []);
-
-
 
   if (getCookie("accessToken") == undefined) {
     console.log("no cookie");
@@ -45,21 +23,7 @@ export default function Main() {
   return (
     <Container>
       <TopbarLogo />
-      {
-        !didWriteToday &&
-        <>
-          <MainText content={"오늘의 글을"}/>
-          <MainText content={"아직 남기지 않으셨네요!"}/>
-        </>
-      }
-      {
-        didWriteToday &&
-        <>
-          {/* TODO: 확인 바람*/}
-          <MainText content={"오늘의 글을"}/>
-          <MainText content={"이미 작성하셨습니다!"}/>
-        </>
-      }
+      <DidWriteToday />
       <span
         onClick={() => {
           navigate("/write-origin");
