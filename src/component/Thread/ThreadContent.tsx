@@ -22,6 +22,7 @@ const Content = styled.div<{ bgColor: string }>`
   color: ${(props) =>
     props.bgColor === "var(--primary-color)" ? "var(--primary-font)" : "white"};
   margin: 0 17px;
+  line-height: 24px;
 `;
 
 function getRandomVariable(): string {

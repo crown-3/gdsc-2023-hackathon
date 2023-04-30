@@ -8,6 +8,7 @@ import ThreadInput from "./ThreadInput";
 import { ThreadInputI, ThreadInputAtom } from "../../store";
 import { useAtom } from "jotai";
 import { useEffect } from "react";
+import { INode } from "../../view/Main/Main";
 
 const Wrap = styled.div`
   margin: 0 var(--min-padding);
@@ -15,9 +16,10 @@ const Wrap = styled.div`
 
 interface IProps {
   threadId: number;
+  thread: INode[];
 }
 
-export default function ThreadList({ threadId }: IProps) {
+export default function ThreadList({ threadId, thread }: IProps) {
   const [threadInput, setThreadInput] = useAtom(ThreadInputAtom);
 
   function getIsOpen(threadInput: ThreadInputI[], threadId: number): boolean {
@@ -44,12 +46,12 @@ export default function ThreadList({ threadId }: IProps) {
   return (
     <Wrap>
       <ThreadStart />
-      <ThreadRingConnection />
-      <ThreadContent content="할 건 많고, 시간은 부족하네요..ㅠㅠ 시간이 참 속절없습니다" />
-      <ThreadRingConnection />
-      <ThreadContent content="할 건 많고, 시간은 부족하네요..ㅠㅠ 시간이 참 속절없습니다" />
-      <ThreadRingConnection />
-      <ThreadContent content="할 건 많고, 시간은 부족하네요..ㅠㅠ 시간이 참 속절없습니다" />
+      {thread.map((node, index) => (
+        <span key={index}>
+          <ThreadRingConnection />
+          <ThreadContent content={node.postContent} />
+        </span>
+      ))}
       <ThreadRingConnection />
       {getIsOpen(threadInput, threadId) ? (
         <span>
