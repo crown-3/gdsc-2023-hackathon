@@ -62,7 +62,7 @@ export default function Pending(){
             console.log("no cookie");
             navigate("/signin");
           } else {
-            navigate("/inbox");
+            navigate("/inbox",{state: {needToast: true, toastMessage : "logined successfully!"}});
           }
     };
 

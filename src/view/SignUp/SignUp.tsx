@@ -139,7 +139,7 @@ export default function SignUp(){
           })
             .then(response => {
               if (response.status == 200) {
-                  navigate("/signin",{state: {toast : "user signed up successfully!"}});
+                  navigate("/signin",{state: {needToast: true, toastMessage : "signed up successfully!"}});
               }
               else {}
             });

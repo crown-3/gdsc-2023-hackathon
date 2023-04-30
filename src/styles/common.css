@@ -48,3 +48,29 @@ body {
         opacity : 1;
     }
 }
+
+@keyframes up-and-down {
+    0% {
+        bottom : -80px;
+    }
+
+    15% {
+        bottom : 10px;
+    } 
+    20% {
+        bottom : 0;
+    }
+
+    80% {
+        bottom : 0;
+    }
+
+    85% {
+        bottom : 10px;
+    }
+
+    0% {
+        bottom : -80px;
+    }
+
+}

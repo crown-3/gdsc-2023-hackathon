@@ -2,9 +2,10 @@ import Container from "../../component/Container";
 import styled from "styled-components";
 import LogoHori from "../../assets/oragi_horizontal.png";
 import Button from "../../component/Button";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { getCookie, setCookie } from "../../cookie";
 import { useState } from "react";
+import Toast from "../../component/Toast";
 
 const WrapperOfWrapper = styled.div`
     position :relative;
@@ -126,6 +127,12 @@ export default function SignIn(){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    const location = useLocation().state??{};
+    let needToast:boolean = false;
+    needToast = (location.needToast!=null);
+
+    let toastMessage:string = location.toastMessage??"";
+    
     if(getCookie("accessToken")!=undefined) {
         navigate("/inbox",{state:{toastMessage : "logined"}});
     }
@@ -146,7 +153,7 @@ export default function SignIn(){
                 console.log(res);
               if (res.grantType) {
                   setCookie("accessToken",res.accessToken);
-                  navigate("/inbox",{state: {toast : "logined successfully!"}});
+                  navigate("/inbox",{state: {needToast: true, toastMessage : "logined successfully!"}});
               }
               else {}
             });
@@ -155,6 +162,7 @@ export default function SignIn(){
 
     return (
         <Container>
+            {<Toast type={(toastMessage.length>0)?"animate":"hide"} content={toastMessage}></Toast>}
             <WrapperOfWrapper>
             <SignLogoWrapper>
             <img src={LogoHori}></img>

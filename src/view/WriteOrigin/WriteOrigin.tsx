@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import AvatarButton from "../../component/AvatarButton";
 import WordCount from "../../component/WordCount";
 import { getCookie } from "../../cookie";
+import { useNavigate } from "react-router-dom";
 
 const CaptionWrapper = styled.div`
     color : var(--placeholder-font);
@@ -59,6 +60,7 @@ const SendButtonWrapper = styled.span`
 `;
 
 export default function WriteOrigin(){
+    const navigate = useNavigate();
     const textareaRef = useRef<HTMLTextAreaElement | null>(null);
     const [count, setCount] = useState(0);
     const handleSubmit =()=>{
@@ -75,6 +77,7 @@ export default function WriteOrigin(){
             .then(response => {
                 if(response.status==200) {
                     console.log("successful");
+                    navigate("/inbox");
                 }
             });
     }
