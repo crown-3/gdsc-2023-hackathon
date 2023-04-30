@@ -2,7 +2,6 @@ import styled from "styled-components";
 import ThreadStart from "./ThreadStart";
 import ThreadContent from "./ThreadContent";
 import ThreadRingConnection from "./ThreadRingConnection";
-import { INode } from "../../view/Main/Main";
 
 const Wrap = styled.div`
   margin: 0 var(--min-padding);
