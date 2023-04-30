@@ -27,3 +27,7 @@
     font-family: 'NanumMyeongjo';
     color : var(--primary-font);
 }
+
+body {
+    background: var(--primary-color);
+}
