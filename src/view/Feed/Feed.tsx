@@ -7,7 +7,7 @@ export default function Feed() {
   return (
     <Container>
       <TopbarLogo />
-      <ThreadListSpecific content={["안녕하세요","더미데이터에요"]}/>
+      <ThreadListSpecific contents={["안녕하세요","더미데이터에요"]}/>
       <div style={{ marginTop: "30px" }}></div>
       <Navigation page="feed" />
     </Container>

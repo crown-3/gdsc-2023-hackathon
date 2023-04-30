@@ -8,21 +8,29 @@ const Wrap = styled.div`
 `;
 
 interface ThreadListProps {
-    content : string[];
+    contents : Post[];
 }
 
-export default function ThreadListSpecific({content}:ThreadListProps) {
+export type Post = {
+  postId: number;
+  postContent: string;
+}
+
+export default function ThreadListSpecific({contents}:ThreadListProps) {
     return (
         <Wrap>
             <ThreadStart />
-            {content.map((element, index)=>{
-	            return (
-                    <>
-                        <ThreadRingConnection />
-                        <ThreadContent key={index} content={element} />
-                    </>
-                );})
+            {contents.map(c=>
+                    <ThreadCard content={c.postContent} key={c.postId} />
+                )
             }
         </Wrap>
     );
 }
+
+interface ThreadCardProps {
+  content: string;
+}
+const ThreadCard = ({content}: ThreadCardProps) => <>
+  <ThreadRingConnection />
+  <ThreadContent content={content}/></>

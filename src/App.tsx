@@ -28,6 +28,7 @@ export default function App() {
             <Route path="/signup" element={<SignUp />}></Route>
             <Route path="/specific" element={<Specific />}></Route>
             <Route path="/feed" element={<Feed />}></Route>
+            <Route path="/specific/:postId" element={<Specific/>}></Route>
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
