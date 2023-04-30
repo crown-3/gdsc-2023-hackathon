@@ -16,6 +16,10 @@ const ThreadContentWrapper = styled.div`
   padding: 5px;
 `;
 
+const ThreadPadding = styled.div`
+  padding: 30px;
+`;
+
 const SemiTitle = styled.div`
   font-size: 24px;
   font-family: "NanumMyeongjoExtraBold";
@@ -87,7 +91,8 @@ export default function MyLog(){
                  
             ))}
         </ThreadWrap>
-
+        <ThreadPadding></ThreadPadding>
+        <Navigation page="profile"/>
     </Container>
   );
 }
