@@ -15,7 +15,11 @@ const Wrap = styled.div`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
-export default function ThreadStart() {
+interface IProps {
+  content:string;
+}
+
+export default function ThreadStart({content}:IProps) {
   return (
     <Wrap>
       <ThreadPunch />
@@ -48,7 +52,7 @@ export default function ThreadStart() {
           marginLeft: "-10px",
         }}
       >
-        시간 부족
+        {content}
       </div>
     </Wrap>
   );

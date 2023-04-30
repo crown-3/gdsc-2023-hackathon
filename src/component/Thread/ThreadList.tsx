@@ -45,11 +45,11 @@ export default function ThreadList({ threadId, thread }: IProps) {
 
   return (
     <Wrap>
-      <ThreadStart />
+      <ThreadStart content={`오라기 ${threadId.toString()}`}/>
       {thread.map((node, index) => (
         <span key={index}>
           <ThreadRingConnection />
-          <ThreadContent content={node.postContent} />
+          <ThreadContent postId={node.postId} content={node.postContent} />
         </span>
       ))}
       <ThreadRingConnection />

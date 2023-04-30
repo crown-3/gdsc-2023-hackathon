@@ -22,6 +22,9 @@ const InputAreaWrapper = styled.div`
     border : 1px var(--primary-font) solid;
     margin : var(--min-padding) 0 0 var(--min-padding);
     border-radius : 20px;
+
+    animation-name : wipe-in ;
+    animation-duration : 1s;
     
 
     &:after {
