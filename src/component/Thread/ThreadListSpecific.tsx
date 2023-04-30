@@ -8,21 +8,30 @@ const Wrap = styled.div`
   margin: 0 var(--min-padding);
 `;
 
-interface IProps {
-  thread: INode[];
+interface ThreadListProps {
+    contents : Post[];
 }
 
-export default function ThreadListSpecific({ thread }: IProps) {
-  console.log("sdf");
-  return (
-    <Wrap>
-      <ThreadStart />
-      {thread.map((node, index) => (
-        <span key={index}>
-          <ThreadRingConnection />
-          <ThreadContent content={node.postContent} />
-        </span>
-      ))}
-    </Wrap>
-  );
+export type Post = {
+  postId: number;
+  postContent: string;
 }
+
+export default function ThreadListSpecific({contents}:ThreadListProps) {
+    return (
+        <Wrap>
+            <ThreadStart />
+            {contents.map(c=>
+                    <ThreadCard content={c.postContent} key={c.postId} />
+                )
+            }
+        </Wrap>
+    );
+}
+
+interface ThreadCardProps {
+  content: string;
+}
+const ThreadCard = ({content}: ThreadCardProps) => <>
+  <ThreadRingConnection />
+  <ThreadContent content={content}/></>

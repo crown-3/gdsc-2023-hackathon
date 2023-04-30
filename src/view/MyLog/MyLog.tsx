@@ -9,6 +9,16 @@ import Navigation from "../../component/Navigation";
 
 import DateText from "../../component/DateText";
 
+import axios from "axios";
+import { getCookie, setCookie } from "../../cookie";
+import { useState, useEffect } from "react";
+const ThreadContentWrapper = styled.div`
+  padding: 5px;
+`;
+
+const ThreadPadding = styled.div`
+  padding: 30px;
+`;
 
 const SemiTitle = styled.div`
   font-size: 24px;
@@ -31,8 +41,32 @@ const DateTextWrapper = styled.div`
     margin : var(--min-padding) 0;
 `;
 
-export default function MyLog() {
-  return (
+
+
+export default function MyLog(){
+    const [contentText, setContentText] = useState<any[]>([]);
+    const [isLoaded, setIsLoaded] = useState(false);
+    useEffect(() => {
+        const getMyLog = async () => {
+          try {
+            const response = await axios.get(`http://gdsc-hackathon.p-e.kr:8080/posts`, {
+              headers: {
+                Authorization: `Bearer ${getCookie("accessToken")}`
+              }
+            });
+            setContentText(response.data.posts);
+            console.log(response.data.posts);
+            
+            setIsLoaded(true);
+             } catch (error) {
+            console.error(error);
+          }
+        };
+    
+        getMyLog();
+      }, []);
+    return (
+
     <Container>
       <TopbarBackButton title="나와 연결된 오라기" />
       <Collapsible>
@@ -47,10 +81,18 @@ export default function MyLog() {
       <DateTextWrapper>
             <DateText content={"2023.04.30"}/>
         </DateTextWrapper>
-      <ThreadWrap>
-        <ThreadContent content={"Hello"}></ThreadContent>
-      </ThreadWrap>
-      <Navigation page="profile" />
+
+        <ThreadWrap>
+            
+            {isLoaded && contentText.map((c) => (
+                <ThreadContentWrapper>
+                 <ThreadContent content={c.content}/>
+                 </ThreadContentWrapper>
+                 
+            ))}
+        </ThreadWrap>
+        <ThreadPadding></ThreadPadding>
+        <Navigation page="profile"/>
     </Container>
   );
 }

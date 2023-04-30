@@ -1,51 +1,41 @@
 import Container from "../../component/Container";
 import { TopbarLogo } from "../../component/Topbar";
-import ThreadListSpecific from "../../component/Thread/ThreadListSpecific.tsx";
+import ThreadListSpecific, { Post } from "../../component/Thread/ThreadListSpecific.tsx";
 import Navigation from "../../component/Navigation.tsx";
 import { useEffect, useState } from "react";
-import axiosInstance from "../../axiosSetting";
-import { IThread } from "../Main/Main.tsx";
-import { getCookie } from "../../cookie.ts";
+import axiosInstance from "../../axiosSetting.ts";
 import axios from "axios";
+import horizontal_stars from "../../assets/horizontal-stars.png";
 
 export default function Feed() {
-  const [data, setData] = useState<IThread>([[]]);
+    const [feed_data,setFeedData] = useState<Array<Post[]>>([]);
 
-  useEffect(() => {
-    async function getAllPosts() {
+    async function fetchPublicPosts() {
       try {
-        const token = getCookie("accessToken");
-
-        const { data, status } = await axiosInstance.get<{
-          postReceiveDetail: IThread;
-        }>(`/posts/public`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-
-        console.log("data: ", data);
-        setData(data.postReceiveDetail);
+        const {data, status} = await axiosInstance.get(`/posts/public`);
+        setFeedData(data.postReceiveDetail);
       } catch (e) {
         if (axios.isAxiosError(e)) {
-          console.log("error message: ", e.message);
-          setData([[]]);
+          return e.message;
         } else {
-          console.log("unexpected error: ", e);
-          setData([[]]);
+          return "An unexpected error occurred.";
         }
       }
     }
-
-    getAllPosts();
-  }, []);
-
+  
+    useEffect(() => {
+      fetchPublicPosts()
+    }, [])
+  
+  console.log(feed_data);
   return (
     <Container>
       <TopbarLogo />
-      {data.map((thread, index) => {
-        <span key={index}>
-          <ThreadListSpecific thread={thread} />
-          <div style={{ marginTop: "30px" }}></div>
-        </span>;
+        {feed_data.map((posts)=>{
+          return(<>
+            <ThreadListSpecific contents={posts}/>
+            <div style={{ display:"flex",alignItems:"center",justifyContent:"center", margin:" var(--min-padding) 0"}}><img src={horizontal_stars}></img></div>
+          </>);
       })}
       <Navigation page="feed" />
     </Container>

@@ -7,6 +7,7 @@ const Wrap = styled.div`
   background-color: var(--primary-color);
   height: 60px;
   width: 100%;
+  max-width: 414px;
   position: fixed;
   bottom: 0;
   z-index: 1000;
@@ -32,7 +33,7 @@ export default function Navigation({ page }: IProps) {
           height: "30px",
           cursor: "pointer",
         }}
-        onClick={() => navigation("/")}
+        onClick={() => navigation("/inbox")}
       >
         <HomeSvg filled={page === "home"} />
       </div>

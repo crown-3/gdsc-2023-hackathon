@@ -7,9 +7,10 @@ import Navigation from "../../component/Navigation";
 import ThreeStars from "../../component/ThreeStars";
 import { getCookie } from "../../cookie";
 import { useNavigate } from "react-router-dom";
-import axiosInstance from "../../axiosSetting";
+
+
 import { useEffect, useState } from "react";
-import axios from "axios";
+
 
 export interface INode {
   postId: number;
@@ -17,6 +18,12 @@ export interface INode {
 }
 
 export type IThread = INode[][];
+
+import React, {useEffect} from "react";
+import axiosInstance from "../../axiosSetting";
+import axios from "axios";
+import DidWriteToday from "../../component/didWriteToday";
+
 
 export default function Main() {
   const navigate = useNavigate();
@@ -57,8 +64,7 @@ export default function Main() {
   return (
     <Container>
       <TopbarLogo />
-      <MainText content={"오늘의 글을"}></MainText>
-      <MainText content={"아직 남기지 않으셨네요!"}></MainText>
+      <DidWriteToday />
       <span
         onClick={() => {
           navigate("/write-origin");
