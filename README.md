@@ -9,7 +9,3 @@
 큰 issue 해결할 때마다 dev 브랜치에서 merge.
 merge 할 때 팀원들에게 알리기.  
 
-
-# 커밋 메시지 전략
-
-[semantic message](https://www.conventionalcommits.org/en/v1.0.0/) 를 따릅니다. 
