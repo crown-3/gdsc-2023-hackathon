@@ -7,6 +7,7 @@ const Wrap = styled.div`
   background-color: var(--primary-color);
   height: 60px;
   width: 100%;
+  max-width: 414px;
   position: fixed;
   bottom: 0;
   z-index: 1000;
