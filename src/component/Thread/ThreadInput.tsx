@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import AvatarButton from "../AvatarButton";
-import WordCount from "../WordCount";
 import { useRef, useState, ChangeEvent } from "react";
 import ThreadPunch from "./ThreadPunch";
 import { useAtom } from "jotai";

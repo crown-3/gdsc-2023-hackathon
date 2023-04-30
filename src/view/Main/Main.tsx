@@ -25,8 +25,6 @@ export default function Main() {
   const [data, setData] = useState<IThread>([[]]);
 
   const location = useLocation().state ?? {};
-  let needToast: boolean = false;
-  needToast = location.needToast != null;
 
   let toastMessage: string = location.toastMessage ?? "";
 
