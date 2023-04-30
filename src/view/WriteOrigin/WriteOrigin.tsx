@@ -18,6 +18,7 @@ const InputAreaWrapper = styled.div`
     position : relative;
     display : inline-block;
     min-width : calc(100vw - 2 * var(--min-padding));
+    max-width: 414px;
     border : 1px var(--primary-font) solid;
     margin : var(--min-padding) 0 0 var(--min-padding);
     border-radius : 20px;
@@ -30,7 +31,7 @@ const InputAreaWrapper = styled.div`
         right : 1em;
         width : 30px;
         height : 30px;
-        background-image: url('../src/assets/stars.png');
+        background-image: url('../../assets/stars.png');
         background-repeat: no-repeat;
         z-index : 1 ;
     }
