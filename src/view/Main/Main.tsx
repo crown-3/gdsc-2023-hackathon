@@ -48,15 +48,16 @@ export default function Main() {
       {
         !didWriteToday &&
         <>
-          <MainText content={"오늘의 글을"}></MainText>
-          <MainText content={"아직 남기지 않으셨네요!"}></MainText>
+          <MainText content={"오늘의 글을"}/>
+          <MainText content={"아직 남기지 않으셨네요!"}/>
         </>
       }
       {
         didWriteToday &&
         <>
-          {/* TODO: 추가 바람*/}
-          <div>오늘은 이미 글을 작성했습니다!</div>
+          {/* TODO: 확인 바람*/}
+          <MainText content={"오늘의 글을"}/>
+          <MainText content={"이미 작성하셨습니다!"}/>
         </>
       }
       <span
