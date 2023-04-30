@@ -69,6 +69,12 @@
   src="./readme-src/11.png"
   alt="mainlogo"
   style="display: flex; margin: auto; align-items:center; justify-content : center; max-width: 300px">
+
+
+<img
+  src="./readme-src/13.png"
+  alt="mainlogo"
+  style="display: flex; margin: auto; align-items:center; justify-content : center; max-width: 300px">
 >
 # 브랜치 전략
 
