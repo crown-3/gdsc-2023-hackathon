@@ -8,9 +8,7 @@ import ThreeStars from "../../component/ThreeStars";
 import { getCookie } from "../../cookie";
 import { useNavigate } from "react-router-dom";
 
-
 import { useEffect, useState } from "react";
-
 
 export interface INode {
   postId: number;
@@ -19,11 +17,9 @@ export interface INode {
 
 export type IThread = INode[][];
 
-import React, {useEffect} from "react";
 import axiosInstance from "../../axiosSetting";
 import axios from "axios";
 import DidWriteToday from "../../component/didWriteToday";
-
 
 export default function Main() {
   const navigate = useNavigate();

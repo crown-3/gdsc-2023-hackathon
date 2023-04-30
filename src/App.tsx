@@ -6,29 +6,34 @@ import Main from "./view/Main/Main";
 import MyLog from "./view/MyLog/MyLog";
 import WriteOrigin from "./view/WriteOrigin/WriteOrigin";
 import "./styles/common.css";
-import Pending from './view/Pending/Pending.tsx';
-import SignIn from './view/SignIn/SignIn.tsx';
-import SignUp from './view/SignUp/SignUp.tsx';
-import { CookiesProvider } from 'react-cookie';
+import Pending from "./view/Pending/Pending.tsx";
+import SignIn from "./view/SignIn/SignIn.tsx";
+import SignUp from "./view/SignUp/SignUp.tsx";
+import { CookiesProvider } from "react-cookie";
 import Specific from "./view/Specific/Specific.tsx";
 import Feed from "./view/Feed/Feed.tsx";
+import WriteOriginLoad from "./view/WriteOriginLoad/WriteOriginLoad.tsx";
 
 export default function App() {
   return (
     <CookiesProvider>
       <ThemeProvider theme={theme}>
-        <GlobalStyle/>
+        <GlobalStyle />
         <BrowserRouter>
           <Routes>
             <Route path="/inbox" element={<Main />}></Route>
             <Route path="/my-log" element={<MyLog />}></Route>
             <Route path="/write-origin" element={<WriteOrigin />}></Route>
+            <Route
+              path="/write-origin-load"
+              element={<WriteOriginLoad />}
+            ></Route>
             <Route path="/" element={<Pending />}></Route>
             <Route path="/signin" element={<SignIn />}></Route>
             <Route path="/signup" element={<SignUp />}></Route>
             <Route path="/specific" element={<Specific />}></Route>
             <Route path="/feed" element={<Feed />}></Route>
-            <Route path="/specific/:postId" element={<Specific/>}></Route>
+            <Route path="/specific/:postId" element={<Specific />}></Route>
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

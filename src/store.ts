@@ -1,8 +1,4 @@
 import { atom } from "jotai";
 
-export interface ThreadInputI {
-  threadId: number;
-  isOpen: boolean;
-}
-
-export const ThreadInputAtom = atom<ThreadInputI[]>([]);
+export const ThreadInputAtom = atom<number[]>([]);
+export const ThreadSubmitAtom = atom<number[]>([]);

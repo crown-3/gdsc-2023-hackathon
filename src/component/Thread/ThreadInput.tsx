@@ -4,7 +4,8 @@ import WordCount from "../WordCount";
 import { useRef, useState, ChangeEvent } from "react";
 import ThreadPunch from "./ThreadPunch";
 import { useAtom } from "jotai";
-import { ThreadInputAtom, ThreadInputI } from "../../store";
+import { ThreadInputAtom, ThreadSubmitAtom } from "../../store";
+import { getCookie } from "../../cookie";
 
 interface IProps {
   threadId: number;
@@ -63,16 +64,43 @@ export default function ThreadInput({ threadId }: IProps) {
   };
 
   const [threadInput, setThreadInput] = useAtom(ThreadInputAtom);
+  const [threadSubmitList, setThreadSubmitList] = useAtom(ThreadSubmitAtom);
 
-  const updateIsOpen = (threadId: number) => {
-    const updatedThreads = threadInput.map((thread) => {
-      if (thread.threadId === threadId) {
-        return { ...thread, isOpen: false };
+  function updateThreadInput(value: number): void {
+    /* 없으면 추가 */
+    if (threadInput.indexOf(threadId) === -1) {
+      setThreadInput([...threadInput, value]);
+    } else {
+      /* 있으면 없앰 */
+      setThreadInput(threadInput.filter((thread) => thread !== value));
+    }
+  }
+
+  function updateThreadSubmitList(value: number): void {
+    /* 없으면 추가 */
+    if (threadSubmitList.indexOf(threadId) === -1) {
+      setThreadSubmitList([...threadSubmitList, value]);
+    }
+    console.log(threadSubmitList);
+  }
+
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+  const handleSubmit = () => {
+    fetch(`http://gdsc-hackathon.p-e.kr:8080/posts`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=UTF-8",
+        Authorization: `Bearer ${getCookie("accessToken")}`,
+      },
+      body: JSON.stringify({
+        content: textareaRef.current!.value,
+      }),
+    }).then((response) => {
+      if (response.status == 200) {
+        console.log("successful");
+        updateThreadSubmitList(threadId);
       }
-      return thread;
     });
-
-    setThreadInput(updatedThreads);
   };
 
   return (
@@ -82,6 +110,7 @@ export default function ThreadInput({ threadId }: IProps) {
         placeholder="오늘은 어떤 일이 있으셨나요?"
         value={text}
         onChange={handleChange}
+        ref={textareaRef}
       />
       <div
         style={{
@@ -99,14 +128,14 @@ export default function ThreadInput({ threadId }: IProps) {
             textDecoration: "underline",
           }}
           onClick={() => {
-            updateIsOpen(threadId);
+            updateThreadInput(threadId);
           }}
         >
           취소
         </div>
       </div>
       <SendButtonWrapper>
-        <AvatarButton type="send"></AvatarButton>
+        <AvatarButton type="send" onClick={handleSubmit}></AvatarButton>
       </SendButtonWrapper>
       <ThreadPunch />
     </InputAreaWrapper>

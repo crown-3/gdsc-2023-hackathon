@@ -5,7 +5,7 @@ import ThreadRingConnection from "./ThreadRingConnection";
 import ThreadConnectBtn from "./ThreadConnectBtn";
 import ThreadEndBtn from "./ThreadEndBtn";
 import ThreadInput from "./ThreadInput";
-import { ThreadInputI, ThreadInputAtom } from "../../store";
+import { ThreadInputAtom, ThreadSubmitAtom } from "../../store";
 import { useAtom } from "jotai";
 import { useEffect } from "react";
 import { INode } from "../../view/Main/Main";
@@ -21,56 +21,66 @@ interface IProps {
 
 export default function ThreadList({ threadId, thread }: IProps) {
   const [threadInput, setThreadInput] = useAtom(ThreadInputAtom);
+  const [threadSubmitList, setThreadSubmitList] = useAtom(ThreadSubmitAtom);
 
-  function getIsOpen(threadInput: ThreadInputI[], threadId: number): boolean {
-    const thread = threadInput.find((thread) => thread.threadId === threadId);
-
-    return thread ? thread.isOpen : false;
+  function updateThreadInput(value: number): void {
+    /* 없으면 추가 */
+    if (threadInput.indexOf(threadId) === -1) {
+      setThreadInput([...threadInput, value]);
+    } else {
+      /* 있으면 없앰 */
+      setThreadInput(threadInput.filter((thread) => thread !== value));
+    }
+    console.log(threadInput);
   }
 
-  const updateIsOpen = (threadId: number) => {
-    const updatedThreads = threadInput.map((thread) => {
-      if (thread.threadId === threadId) {
-        return { ...thread, isOpen: true };
-      }
-      return thread;
-    });
-
-    setThreadInput(updatedThreads);
-  };
-
-  useEffect(() => {
-    setThreadInput([...threadInput, { threadId: threadId, isOpen: false }]);
-  }, []);
-
-  return (
-    <Wrap>
-      <ThreadStart />
-      {thread.map((node, index) => (
-        <span key={index}>
-          <ThreadRingConnection />
-          <ThreadContent content={node.postContent} />
-        </span>
-      ))}
-      <ThreadRingConnection />
-      {getIsOpen(threadInput, threadId) ? (
-        <span>
-          <ThreadInput threadId={threadId} />
-        </span>
-      ) : (
-        <span>
-          <span
-            onClick={() => {
-              updateIsOpen(threadId);
-            }}
-          >
-            <ThreadConnectBtn />
+  if (threadSubmitList.indexOf(threadId) === -1) {
+    return (
+      <Wrap>
+        <ThreadStart content={threadId.toString()} />
+        {thread.map((node, index) => (
+          <span key={index}>
+            <ThreadRingConnection />
+            <ThreadContent content={node.postContent} />
           </span>
+        ))}
+        <ThreadRingConnection />
+        {threadInput.indexOf(threadId) !== -1 ? (
           <span>
-            <ThreadEndBtn />
+            <ThreadInput threadId={threadId} />
           </span>
-        </span>
-      )}
-    </Wrap>
-  );
+        ) : (
+          <span>
+            <span
+              onClick={() => {
+                updateThreadInput(threadId);
+              }}
+            >
+              <ThreadConnectBtn />
+            </span>
+            <span>
+              <ThreadEndBtn />
+            </span>
+          </span>
+        )}
+      </Wrap>
+    );
+  } else {
+    return (
+      <div
+        style={{
+          backgroundColor: "#7FC99D",
+          fontFamily: "NanumMyeongjoExtraBold",
+          fontSize: "24px",
+          color: "#FFFFFF",
+          height: "52px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        정상적으로 전송되었습니다!
+      </div>
+    );
+  }
 }
