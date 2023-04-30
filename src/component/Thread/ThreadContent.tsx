@@ -3,6 +3,8 @@ import ThreadPunch from "./ThreadPunch";
 
 interface IProps {
   content: string;
+  postId : number;
+  onClick? : (postId:number)=>void;
 }
 
 const Wrap = styled.div<{ bgColor: string }>`
@@ -22,6 +24,7 @@ const Content = styled.div<{ bgColor: string }>`
   color: ${(props) =>
     props.bgColor === "var(--primary-color)" ? "var(--primary-font)" : "white"};
   margin: 0 17px;
+  line-height: 24px;
 `;
 
 function getRandomVariable(): string {
@@ -30,11 +33,11 @@ function getRandomVariable(): string {
   return variables[randomIndex];
 }
 
-export default function ThreadContent({ content }: IProps) {
+export default function ThreadContent({ content ,onClick = ()=>{},postId}: IProps) {
   const randomVariable = getRandomVariable();
 
   return (
-    <Wrap bgColor={randomVariable}>
+    <Wrap bgColor={randomVariable} onClick={()=>{onClick(postId);}}>
       <div style={{ marginTop: "12px" }}></div> {/* Margination */}
       <ThreadPunch />
       <div style={{ marginTop: "8px" }}></div> {/* Margination */}

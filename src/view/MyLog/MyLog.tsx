@@ -10,8 +10,9 @@ import Navigation from "../../component/Navigation";
 import DateText from "../../component/DateText";
 
 import axios from "axios";
-import { getCookie, setCookie } from "../../cookie";
+import { getCookie } from "../../cookie";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 const ThreadContentWrapper = styled.div`
   padding: 5px;
 `;
@@ -44,6 +45,7 @@ const DateTextWrapper = styled.div`
 
 
 export default function MyLog(){
+    const navigate = useNavigate();
     const [contentText, setContentText] = useState<any[]>([]);
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
@@ -65,6 +67,11 @@ export default function MyLog(){
     
         getMyLog();
       }, []);
+
+    const navigateToSpecific = (id:number)=>{
+        navigate(`/specific/${id}`);
+    }
+    
     return (
 
     <Container>
@@ -86,7 +93,7 @@ export default function MyLog(){
             
             {isLoaded && contentText.map((c) => (
                 <ThreadContentWrapper>
-                 <ThreadContent content={c.content}/>
+                 <ThreadContent onClick={navigateToSpecific} postId={c.postId}content={c.content}/>
                  </ThreadContentWrapper>
                  
             ))}

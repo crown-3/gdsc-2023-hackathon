@@ -21,7 +21,7 @@ export default function ThreadListSpecific({contents}:ThreadListProps) {
         <Wrap>
             <ThreadStart />
             {contents.map(c=>
-                    <ThreadCard content={c.postContent} key={c.postId} />
+                    <ThreadCard content={c.postContent} postId={c.postId} />
                 )
             }
         </Wrap>
@@ -30,7 +30,8 @@ export default function ThreadListSpecific({contents}:ThreadListProps) {
 
 interface ThreadCardProps {
   content: string;
+  postId: number;
 }
-const ThreadCard = ({content}: ThreadCardProps) => <>
+const ThreadCard = ({content, postId}: ThreadCardProps) => <>
   <ThreadRingConnection />
-  <ThreadContent content={content}/></>
+  <ThreadContent postId={postId} content={content}/></>
