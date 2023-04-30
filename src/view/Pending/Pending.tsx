@@ -20,9 +20,11 @@ const LogoWrapper = styled.div`
     display : inline-block;
     top : 50%;
     left : 50%;
-    transform : translate(-50%, -50%);
+    transform : translateY(-50%) translateX(-50%);
     width : 85px;
     height : 280px;
+    animation-name : float-up-logo ;
+    animation-duration : 1s;
     
     img {
         display : inline-block;
@@ -62,7 +64,7 @@ export default function Pending(){
             console.log("no cookie");
             navigate("/signin");
           } else {
-            navigate("/inbox");
+            navigate("/inbox",{state: {needToast: true, toastMessage : "logined successfully!"}});
           }
     };
 

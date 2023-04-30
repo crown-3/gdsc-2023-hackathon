@@ -1,13 +1,8 @@
 import styled from "styled-components";
 import AvatarButton from "./AvatarButton";
 import WordCount from "./WordCount";
-import { useRef, useState, ChangeEvent } from "react";
-import {Ref} from "react";
+import { useState, ChangeEvent } from "react";
 
-interface InputAreaProp {
-    ref: Ref<HTMLTextAreaElement>;
-    onSubmit: ()=>void;
-}
 
 const InputAreaWrapper = styled.div`
   position: relative;

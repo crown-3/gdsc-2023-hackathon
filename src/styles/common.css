@@ -31,3 +31,61 @@
 body {
     background: var(--primary-color);
 }
+
+@keyframes float-up {
+    0% {
+        transform : translateY(30px);
+        opacity :0;
+    }
+
+    30% {
+        transform : translateY(30px);
+        opacity :0;
+    }
+
+    100% {
+        transform : translateY(0);
+        opacity : 1;
+    }
+}
+
+@keyframes float-up-logo {
+    0% {
+        transform : translate(-50%,-60%);
+        opacity :0;
+    }
+
+    100% {
+        transform : translate(-50%,-50%);
+        opacity : 1;
+    }
+}
+
+
+@keyframes up-and-down {
+    0% {
+        bottom : -80px;
+    }
+
+    15% {
+        bottom : 10px;
+    } 
+    20% {
+        bottom : 0;
+    }
+
+    80% {
+        bottom : 0;
+    }
+
+    85% {
+        bottom : 10px;
+        opacity: 1;
+    }
+
+    100% {
+        bottom : -80px;
+        opacity : 0;
+    }
+
+}

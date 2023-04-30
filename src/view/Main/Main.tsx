@@ -6,9 +6,12 @@ import ThreadList from "../../component/Thread/ThreadList";
 import Navigation from "../../component/Navigation";
 import ThreeStars from "../../component/ThreeStars";
 import { getCookie } from "../../cookie";
-import { useNavigate } from "react-router-dom";
-
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import axiosInstance from "../../axiosSetting";
+import axios from "axios";
+import DidWriteToday from "../../component/didWriteToday";
+import Toast from "../../component/Toast";
 
 export interface INode {
   postId: number;
@@ -17,20 +20,22 @@ export interface INode {
 
 export type IThread = INode[][];
 
-import axiosInstance from "../../axiosSetting";
-import axios from "axios";
-import DidWriteToday from "../../component/didWriteToday";
-
 export default function Main() {
   const navigate = useNavigate();
   const [data, setData] = useState<IThread>([[]]);
+
+  const location = useLocation().state ?? {};
+  let needToast: boolean = false;
+  needToast = location.needToast != null;
+
+  let toastMessage: string = location.toastMessage ?? "";
 
   useEffect(() => {
     async function getAllPosts() {
       try {
         const token = getCookie("accessToken");
 
-        const { data, status } = await axiosInstance.get<{
+        const { data } = await axiosInstance.get<{
           postReceiveDetail: IThread;
         }>(`/posts/all`, {
           headers: { Authorization: `Bearer ${token}` },
@@ -59,6 +64,12 @@ export default function Main() {
 
   return (
     <Container>
+      {
+        <Toast
+          type={toastMessage.length > 0 ? "animate" : "hide"}
+          content={toastMessage}
+        ></Toast>
+      }
       <TopbarLogo />
       <DidWriteToday />
       <span
