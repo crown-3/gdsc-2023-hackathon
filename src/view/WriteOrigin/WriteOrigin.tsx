@@ -60,7 +60,7 @@ export default function WriteOrigin() {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const [count, setCount] = useState(0);
   const handleSubmit = () => {
-    fetch(`http://gdsc-hackathon.p-e.kr:8080/posts`, {
+    fetch(`https://gdsc-hackathon.p-e.kr/posts`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=UTF-8",

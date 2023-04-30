@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from "axios";
 import {getCookie} from "./cookie";
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: "http://gdsc-hackathon.p-e.kr:8080",
+  baseURL: "https://gdsc-hackathon.p-e.kr",
 });
 
 // async function fetchTimes(type: string) {

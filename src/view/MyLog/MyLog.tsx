@@ -53,7 +53,7 @@ export default function MyLog(){
     useEffect(() => {
         const getMyLog = async () => {
           try {
-            const response = await axios.get(`http://gdsc-hackathon.p-e.kr:8080/posts`, {
+            const response = await axios.get(`https://gdsc-hackathon.p-e.kr/posts`, {
               headers: {
                 Authorization: `Bearer ${getCookie("accessToken")}`
               }

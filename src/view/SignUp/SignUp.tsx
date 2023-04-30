@@ -127,7 +127,7 @@ export default function SignUp(){
   if(getCookie("accessToken")!=undefined) {removeCookie("accessToken");}
 
     const handleSignUp = () =>{
-      fetch(`http://gdsc-hackathon.p-e.kr:8080/user/signup`, {
+      fetch(`https://gdsc-hackathon.p-e.kr/user/signup`, {
             method: 'POST',
             headers:{
               "Content-Type": 'application/json;charset=UTF-8',
