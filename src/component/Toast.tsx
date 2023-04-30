@@ -13,6 +13,7 @@ const Wrapper = styled.div`
     padding-left : 40px;
     drop-shadow :  0 0 1px black;
 
+    animation-fill-mode : forwards;
     animation-name : up-and-down;
     animation-duration :3s;
     animation-repeat : no-repeat;

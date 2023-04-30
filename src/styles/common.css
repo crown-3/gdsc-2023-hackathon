@@ -49,6 +49,19 @@ body {
     }
 }
 
+@keyframes float-up-logo {
+    0% {
+        transform : translate(-50%,-60%);
+        opacity :0;
+    }
+
+    100% {
+        transform : translate(-50%,-50%);
+        opacity : 1;
+    }
+}
+
+
 @keyframes up-and-down {
     0% {
         bottom : -80px;
@@ -67,10 +80,12 @@ body {
 
     85% {
         bottom : 10px;
+        opacity: 1;
     }
 
-    0% {
+    100% {
         bottom : -80px;
+        opacity : 0;
     }
 
 }
