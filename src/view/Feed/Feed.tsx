@@ -12,7 +12,7 @@ export default function Feed() {
 
     async function fetchPublicPosts() {
       try {
-        const {data, status} = await axiosInstance.get(`/posts/public`);
+        const {data} = await axiosInstance.get(`/posts/public`);
         setFeedData(data.postReceiveDetail);
       } catch (e) {
         if (axios.isAxiosError(e)) {
