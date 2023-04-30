@@ -17,6 +17,19 @@ const TopbarWrapper = styled.div`
   z-index: 1000;
 `;
 
+const TopbarWrapperAlt = styled.div`
+  display: flex;
+  align-items: space-between;
+  padding: 17px 15px;
+  justify-content: space-between;
+
+  background-color: #fffff080;
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+`;
+
 const LogoWrapper = styled.span`
   display: inline-block;
   max-width: 100px;
@@ -28,8 +41,10 @@ const LogoWrapper = styled.span`
     height: 100%;
   }
 `;
+
 const TitleWrapper = styled.span`
-  font-family: "NanumMyeongjoBold";
+  font-family: "NanumMyeongjoExtraBold";
+  font-size: var(--font-size-medium);
 `;
 
 export function TopbarLogo() {
@@ -43,17 +58,18 @@ export function TopbarLogo() {
 }
 
 export function TopbarBackButton(props: any) {
-  const navigate = useNavigate();
-
-  const handleBack = ()=>{  
-    navigate(-1);
-  };
-
+  const navigation = useNavigate();
   return (
-    <TopbarWrapper>
-      <AvatarButton type="back" onClick={handleBack}></AvatarButton>
+    <TopbarWrapperAlt>
+      <span
+        onClick={() => {
+          navigation(-1);
+        }}
+      >
+        <AvatarButton type="back"></AvatarButton>
+      </span>
       <TitleWrapper>{props.title}</TitleWrapper>
       <AvatarButton type="blank"></AvatarButton>
-    </TopbarWrapper>
+    </TopbarWrapperAlt>
   );
 }

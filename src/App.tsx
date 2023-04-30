@@ -1,10 +1,10 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { theme } from './styles/theme.ts';
-import { ThemeProvider } from 'styled-components';
-import {GlobalStyle} from './global-style';
-import Main from './view/Main/Main';
-import MyLog from './view/MyLog/MyLog';
-import WriteOrigin from './view/WriteOrigin/WriteOrigin';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { theme } from "./styles/theme.ts";
+import { ThemeProvider } from "styled-components";
+import { GlobalStyle } from "./global-style";
+import Main from "./view/Main/Main";
+import MyLog from "./view/MyLog/MyLog";
+import WriteOrigin from "./view/WriteOrigin/WriteOrigin";
 import "./styles/common.css";
 import Pending from './view/Pending/Pending.tsx';
 import SignIn from './view/SignIn/SignIn.tsx';
@@ -28,6 +28,7 @@ export default function App() {
             <Route path="/signup" element={<SignUp />}></Route>
             <Route path="/specific" element={<Specific />}></Route>
             <Route path="/feed" element={<Feed />}></Route>
+            <Route path="/specific/:postId" element={<Specific/>}></Route>
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

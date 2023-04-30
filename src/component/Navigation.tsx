@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import { FeedSvg, HomeSvg, ProfileSvg } from "../assets/Svgs";
+import { useNavigate } from "react-router-dom";
 
 const Wrap = styled.div`
   border-top: 2px solid var(--primary-font);
   background-color: var(--primary-color);
   height: 60px;
   width: 100%;
+  max-width: 414px;
   position: fixed;
   bottom: 0;
   z-index: 1000;
@@ -21,6 +23,8 @@ interface IProps {
 }
 
 export default function Navigation({ page }: IProps) {
+  const navigation = useNavigate();
+
   return (
     <Wrap>
       <div
@@ -29,6 +33,7 @@ export default function Navigation({ page }: IProps) {
           height: "30px",
           cursor: "pointer",
         }}
+        onClick={() => navigation("/")}
       >
         <HomeSvg filled={page === "home"} />
       </div>
@@ -38,6 +43,7 @@ export default function Navigation({ page }: IProps) {
           height: "30px",
           cursor: "pointer",
         }}
+        onClick={() => navigation("/feed")}
       >
         <FeedSvg filled={page === "feed"} />
       </div>
@@ -47,6 +53,7 @@ export default function Navigation({ page }: IProps) {
           height: "30px",
           cursor: "pointer",
         }}
+        onClick={() => navigation("/my-log")}
       >
         <ProfileSvg filled={page === "profile"} />
       </div>

@@ -44,7 +44,7 @@ export default function MainInput() {
       <div>
         <div
           style={{
-            borderTop: "1px solid var(--primary-font)",
+            borderTop: "1.5px solid var(--primary-font)",
             marginBottom: "14px",
             width: "calc(100% - 30px)",
           }}
@@ -56,13 +56,13 @@ export default function MainInput() {
       <div>
         <div
           style={{
-            borderTop: "1px solid var(--primary-font)",
+            borderTop: "1.5px solid var(--primary-font)",
             marginTop: "14px",
           }}
         ></div>
         <div
           style={{
-            borderTop: "1px solid var(--primary-font)",
+            borderTop: "1.5px solid var(--primary-font)",
             marginTop: "10px",
             width: "120px",
           }}
