@@ -33,6 +33,8 @@ const Caption = styled.div`
 
 const ThreadWrap = styled.div`
   margin: 0 var(--min-padding);
+  animation-name : float-up;
+  animation-duration : 1s;
 `;
 
 const DateTextWrapper = styled.div`

@@ -7,6 +7,8 @@ import axiosInstance from "../../axiosSetting.ts";
 import axios from "axios";
 import horizontal_stars from "../../assets/horizontal-stars.png";
 
+const dummyTitle = ["우울증", "슬픔"];
+
 export default function Feed() {
     const [feed_data,setFeedData] = useState<Array<Post[]>>([]);
 
@@ -31,9 +33,9 @@ export default function Feed() {
   return (
     <Container>
       <TopbarLogo />
-        {feed_data.map((posts)=>{
+        {feed_data.map((posts,index)=>{
           return(<>
-            <ThreadListSpecific contents={posts}/>
+            <ThreadListSpecific title={dummyTitle[index%2]} contents={posts}/>
             <div style={{ display:"flex",alignItems:"center",justifyContent:"center", margin:" var(--min-padding) 0"}}><img src={horizontal_stars}></img></div>
           </>);
       })}

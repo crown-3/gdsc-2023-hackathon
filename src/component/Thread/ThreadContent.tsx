@@ -3,7 +3,7 @@ import ThreadPunch from "./ThreadPunch";
 
 interface IProps {
   content: string;
-  postId : number;
+  postId? : number;
   onClick? : (postId:number)=>void;
 }
 
@@ -37,7 +37,7 @@ export default function ThreadContent({ content ,onClick = ()=>{},postId}: IProp
   const randomVariable = getRandomVariable();
 
   return (
-    <Wrap bgColor={randomVariable} onClick={()=>{onClick(postId);}}>
+    <Wrap bgColor={randomVariable} onClick={()=>{if(postId){onClick(postId);}}}>
       <div style={{ marginTop: "12px" }}></div> {/* Margination */}
       <ThreadPunch />
       <div style={{ marginTop: "8px" }}></div> {/* Margination */}
