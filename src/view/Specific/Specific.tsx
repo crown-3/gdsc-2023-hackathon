@@ -14,7 +14,7 @@ export default function Specific(){
   const { postId } = useParams();
   async function fetchLinkedPosts() {
     try {
-      const {data, status} = await axiosInstance.get(`/posts/${postId}`);
+      const {data} = await axiosInstance.get(`/posts/${postId}`);
       setLinkedPost(data.postLinked);
     } catch (e) {
       if (axios.isAxiosError(e)) {
