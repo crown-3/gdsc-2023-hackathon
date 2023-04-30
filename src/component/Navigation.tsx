@@ -33,7 +33,7 @@ export default function Navigation({ page }: IProps) {
           height: "30px",
           cursor: "pointer",
         }}
-        onClick={() => navigation("/")}
+        onClick={() => navigation("/inbox")}
       >
         <HomeSvg filled={page === "home"} />
       </div>
