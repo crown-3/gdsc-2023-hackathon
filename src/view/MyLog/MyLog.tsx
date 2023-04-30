@@ -7,8 +7,10 @@ import ThreadContent from "../../component/Thread/ThreadContent";
 import DateText from "../../component/DateText";
 import axios from "axios";
 import { getCookie, setCookie } from "../../cookie";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+const ThreadContentWrapper = styled.div`
+  padding: 5px;
+`;
 const SemiTitle = styled.div`
     font-size : var(--font-size-medium); 
 `
@@ -27,29 +29,31 @@ const DateTextWrapper = styled.div`
     justify-content : center;
     margin : var(--min-padding) 0;
 `;
-var content_text="";
+
 
 
 export default function MyLog(){
-
+    const [contentText, setContentText] = useState<any[]>([]);
     const [isLoaded, setIsLoaded] = useState(false);
-    const getMyLog = async () => {
-        try {
-          const response = await axios.get(`http://gdsc-hackathon.p-e.kr:8080/posts`,{ 
-            headers : {
-              Authorization: `Bearer ${getCookie("accessToken")}`
-            }
-          });
-          content_text = response.data.posts[0].content;
-          console.log(response.data.posts[0].content);
-          setIsLoaded(true);
-        } catch (error) {
-          console.error(error);
-        }
-      }; 
-      
-      getMyLog();
-      console.log(content_text);
+    useEffect(() => {
+        const getMyLog = async () => {
+          try {
+            const response = await axios.get(`http://gdsc-hackathon.p-e.kr:8080/posts`, {
+              headers: {
+                Authorization: `Bearer ${getCookie("accessToken")}`
+              }
+            });
+            setContentText(response.data.posts);
+            console.log(response.data.posts);
+            
+            setIsLoaded(true);
+             } catch (error) {
+            console.error(error);
+          }
+        };
+    
+        getMyLog();
+      }, []);
     return (
     <Container>
         <TopbarBackButton title="나와 연결된 오라기"/>
@@ -64,10 +68,13 @@ export default function MyLog(){
             <DateText content={"2023.04.30"}/>
         </DateTextWrapper>
         <ThreadWrap>
-
-            {isLoaded &&<>
-            <ThreadContent content={content_text}></ThreadContent>
-            </>}
+            
+            {isLoaded && contentText.map((c) => (
+                <ThreadContentWrapper>
+                 <ThreadContent content={c.content}/>
+                 </ThreadContentWrapper>
+                 
+            ))}
         </ThreadWrap>
     </Container>
     );
