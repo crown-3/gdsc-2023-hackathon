@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import PreviewNotifier from "./PreviewNotifier";
 
 const Wrapper = styled.div`
   top: 0;
@@ -12,5 +13,8 @@ const Wrapper = styled.div`
 `;
 
 export default function Container(props: any) {
-  return <Wrapper>{props.children}</Wrapper>;
+  return <Wrapper>
+    <PreviewNotifier/>
+    {props.children}
+    </Wrapper>;
 }

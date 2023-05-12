@@ -6,11 +6,16 @@ import { useEffect, useState } from "react";
 import axiosInstance from "../../axiosSetting.ts";
 import axios from "axios";
 import horizontal_stars from "../../assets/horizontal-stars.png";
+import * as Dummy from  "../../dummy-data";
+import { getCookie } from "../../cookie.ts";
 
 const dummyTitle = ["우울증", "슬픔"];
 
 export default function Feed() {
     const [feed_data,setFeedData] = useState<Array<Post[]>>([]);
+    function getDummyFeeds() {
+      setFeedData(Dummy.dummyFeeds);
+    }
 
     async function fetchPublicPosts() {
       try {
@@ -26,10 +31,11 @@ export default function Feed() {
     }
   
     useEffect(() => {
-      fetchPublicPosts()
+      if(getCookie("preview-mode")!=="true") fetchPublicPosts();
+      else getDummyFeeds();
+      
     }, [])
   
-  console.log(feed_data);
   return (
     <Container>
       <TopbarLogo />

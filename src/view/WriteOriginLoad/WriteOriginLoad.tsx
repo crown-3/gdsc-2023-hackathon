@@ -2,7 +2,8 @@ import styled, { keyframes } from "styled-components";
 import Send from "../../assets/Svgs";
 import Container from "../../component/Container";
 import Button from "../../component/Button";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import Toast from "../../component/Toast";
 
 const SvgAnimation = keyframes`
     0% {
@@ -22,8 +23,16 @@ const SendSvg = styled.div`
 
 export default function WriteOriginLoad() {
   const navigator = useNavigate();
+
+  const location = useLocation().state ?? {};
+  let toastMessage: string = location.toastMessage ?? "";
+
   return (
     <Container>
+      <Toast
+          type={toastMessage.length > 0 ? "animate" : "hide"}
+          content={toastMessage}
+        ></Toast>
       <div
         style={{
           display: "flex",
