@@ -124,6 +124,9 @@ export default function SignUp(){
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  if(getCookie("preview-mode")==="true") {
+    navigate("/signin",{state: {needToast: true, toastMessage : "sign-up is unavailable in preview mode! You will be redirected to signin page."}});
+  }
   if(getCookie("accessToken")!=undefined) {removeCookie("accessToken");}
 
     const handleSignUp = () =>{

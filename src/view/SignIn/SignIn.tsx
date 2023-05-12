@@ -138,7 +138,12 @@ export default function SignIn(){
     }
 
     const handleClick = ()=>{
-        fetch(`https://gdsc-hackathon.p-e.kr/user/login`, {
+        if (username==="preview" && password ==="1234") {
+            setCookie("accessToken","preview-dummy-token");
+            setCookie("preview-mode","true");
+            navigate("/inbox",{state: {needToast: true, toastMessage : "logined in preview mode!"}});
+        }
+        fetch(`http://gdsc-hackathon.p-e.kr:8080/user/login`, {
             method: 'POST',
             headers:{
               "Content-Type": 'application/json;charset=UTF-8',

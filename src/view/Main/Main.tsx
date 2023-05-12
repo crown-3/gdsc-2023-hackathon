@@ -12,6 +12,7 @@ import axiosInstance from "../../axiosSetting";
 import axios from "axios";
 import DidWriteToday from "../../component/didWriteToday";
 import Toast from "../../component/Toast";
+import * as Dummy from  "../../dummy-data";
 
 export interface INode {
   postId: number;
@@ -52,7 +53,12 @@ export default function Main() {
       }
     }
 
-    getAllPosts();
+    function getDummyPosts() {
+      setData(Dummy.dummyPosts);
+    }
+
+    if(getCookie("preview-mode")!=="true") getAllPosts();
+    else getDummyPosts();
   }, []);
 
   if (getCookie("accessToken") == undefined) {

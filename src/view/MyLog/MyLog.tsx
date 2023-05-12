@@ -13,6 +13,8 @@ import axios from "axios";
 import { getCookie } from "../../cookie";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import * as Dummy from  "../../dummy-data";
+
 const ThreadContentWrapper = styled.div`
   padding: 5px;
 `;
@@ -51,6 +53,11 @@ export default function MyLog(){
     const [contentText, setContentText] = useState<any[]>([]);
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
+        function getDummyMyLog() {
+          setContentText(Dummy.dummyMyLog);
+          setIsLoaded(true);
+        }
+
         const getMyLog = async () => {
           try {
             const response = await axios.get(`https://gdsc-hackathon.p-e.kr/posts`, {
@@ -59,15 +66,17 @@ export default function MyLog(){
               }
             });
             setContentText(response.data.posts);
-            console.log(response.data.posts);
+            //console.log(response.data.posts);
             
             setIsLoaded(true);
              } catch (error) {
             console.error(error);
           }
         };
-    
-        getMyLog();
+        
+        if(getCookie("preview-mode")!=="true") getMyLog();
+        else getDummyMyLog();
+        
       }, []);
 
     const navigateToSpecific = (id:number)=>{
@@ -95,7 +104,7 @@ export default function MyLog(){
             
             {isLoaded && contentText.map((c) => (
                 <ThreadContentWrapper>
-                 <ThreadContent onClick={navigateToSpecific} postId={c.postId}content={c.content}/>
+                 <ThreadContent onClick={navigateToSpecific} postId={c.postId} content={c.content}/>
                  </ThreadContentWrapper>
                  
             ))}

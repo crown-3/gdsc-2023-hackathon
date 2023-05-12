@@ -60,7 +60,10 @@ export default function WriteOrigin() {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const [count, setCount] = useState(0);
   const handleSubmit = () => {
-    fetch(`https://gdsc-hackathon.p-e.kr/posts`, {
+    if(getCookie("preview-mode")==="true") {
+      navigator("/write-origin-load",{state: {needToast: true, toastMessage : "this page simply shows flow. Actual transmission do not happen in preview mode."}});
+    } 
+    else fetch(`http://gdsc-hackathon.p-e.kr:8080/posts`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=UTF-8",

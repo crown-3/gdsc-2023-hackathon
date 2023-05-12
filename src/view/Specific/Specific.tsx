@@ -7,11 +7,18 @@ import axiosInstance from "../../axiosSetting";
 import React, {useEffect} from "react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
+import { getCookie } from "../../cookie.ts";
+import * as Dummy from  "../../dummy-data";
 
 export default function Specific(){
 
   const [linkedPost, setLinkedPost] = React.useState<Post[]>([]);
   const { postId } = useParams();
+
+  function fetchDummyLinkedPosts(){
+    setLinkedPost(Dummy.dummySpecificPost);
+  }
+
   async function fetchLinkedPosts() {
     try {
       const {data} = await axiosInstance.get(`/posts/${postId}`);
@@ -26,7 +33,8 @@ export default function Specific(){
   }
 
   useEffect(() => {
-    fetchLinkedPosts()
+    if(getCookie("preview-mode")!=="true") fetchLinkedPosts();
+    else fetchDummyLinkedPosts();
   }, [])
 
     return (

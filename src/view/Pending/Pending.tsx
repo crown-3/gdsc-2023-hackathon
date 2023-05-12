@@ -4,6 +4,7 @@ import Button from "../../component/Button";
 import UnderlinedText from "../../component/UnderlinedText";
 import { useNavigate } from "react-router-dom";
 import { getCookie } from "../../cookie";
+import PreviewNotifier from "../../component/PreviewNotifier";
 
 const PendingWrapper = styled.div`
     position : absolute;
@@ -64,7 +65,8 @@ export default function Pending(){
             console.log("no cookie");
             navigate("/signin");
           } else {
-            navigate("/inbox",{state: {needToast: true, toastMessage : "logined successfully!"}});
+            if(getCookie("preview-mode")!=="true") navigate("/inbox",{state: {needToast: true, toastMessage : "logined successfully!"}});
+            else navigate("/inbox",{state: {needToast: true, toastMessage : "logined in preview mode!"}});
           }
     };
 
@@ -74,6 +76,7 @@ export default function Pending(){
 
     return (
         <PendingWrapper>
+            <PreviewNotifier/>
             <LogoWrapper>
                 <img src={LogoVertical}></img>
             </LogoWrapper>
